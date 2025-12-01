@@ -1,10 +1,31 @@
 import React from 'react'
+import './App.css'
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import Home from './components/Home';
+import Navbar from './components/CoustomerNavbar';
+
+const MainLayout = () => (
+  <div className="lg:mx-auto lg:max-w-[1536px]">
+    <Navbar />
+    <Outlet />
+    {/* <Footer /> */}
+  </div>
+);
+
+const router = createBrowserRouter([
+  {
+    element: <MainLayout />,
+    children: [
+      { path: "/", element: <Home /> },
+    ],
+  },
+  // { path: "*", element: <PageNotFound /> },
+]);
+
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello from App</h1>
-    </div>
+    <RouterProvider router={router}></RouterProvider>
   )
 }
 
