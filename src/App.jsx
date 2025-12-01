@@ -13,7 +13,7 @@ const MainLayout = () => (
    <div className="lg:mx-auto lg:max-w-[1536px]">
       <Navbar />
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
    </div>
 );
 
