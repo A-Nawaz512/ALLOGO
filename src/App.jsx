@@ -1,8 +1,8 @@
 import React from 'react'
 import './App.css'
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import Home from './components/Home';
-import Navbar from './components/CoustomerNavbar';
+import Home from './components/homePageComponents/Home';
+import Navbar from './components/commonComponents/CoustomerNavbar';
 
 const MainLayout = () => (
   <div className="lg:mx-auto lg:max-w-[1536px]">
