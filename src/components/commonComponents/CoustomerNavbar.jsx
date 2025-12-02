@@ -12,9 +12,9 @@ const ModernNavbar = () => {
   const toggleServices = () => setServicesOpen(!servicesOpen);
 
   return (
-    <nav className="bg-[#000000] text-gray-100 py-2 shadow-lg sticky top-0 z-50">
+    <nav className="bg-black text-gray-100 py-2 shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex justify-between items-center ">
+        <div className="flex justify-around items-center ">
           {/* Brand */}
           <Link
             to="/"
@@ -25,13 +25,13 @@ const ModernNavbar = () => {
               alt="Logo"
               className="h-10 w-auto lg:h-12 lg:w-auto"
             />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DEB74B] via-[#F1C27D] to-[#FFD700] text-3xl font-semibold font-mono">
-              AI LOGO
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DEB74B] via-[#F1C27D] to-[#FFD700] text-3xl font-serif">
+              AILOGO
             </span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center">
             <Link
               to="/"
               className="text-gray-100 hover:bg-[#6F4918] px-5 py-2 rounded font-medium transition-colors duration-300"
@@ -53,9 +53,8 @@ const ModernNavbar = () => {
               >
                 <span>Services</span>
                 <svg
-                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
-                    servicesOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -70,7 +69,7 @@ const ModernNavbar = () => {
                 </svg>
               </button>
               {servicesOpen && (
-                <div className="absolute mt-2 w-48 bg-gray-800 border border-[#202020] rounded-lg shadow-lg py-2 animate-fadeIn">
+                <div className="absolute mt-2 w-48 bg-black py-5 border border-[#202020] rounded-lg shadow-lg  animate-fadeIn">
                   <Link
                     to="/services/rides"
                     className="block px-4 py-2 text-gray-100 hover:bg-[#6F4918] rounded-md transition-colors duration-300"
@@ -104,8 +103,9 @@ const ModernNavbar = () => {
             >
               Contact
             </Link>
-
-            {/* Buttons */}
+          </div>
+          {/* Buttons */}
+          <div className="space-x-5">
             <Link
               to="/signup"
               className="px-5 py-2 bg-gradient-to-r from-[#6F4918] via-[#6F4918] to-[#E2CF7D] text-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
@@ -185,14 +185,14 @@ const ModernNavbar = () => {
 
           <Link
             to="/signup"
-            className="block mx-6 mt-3 px-5 py-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white rounded-lg shadow-md text-center hover:shadow-xl transition-all duration-300"
+            className="block mx-6 mt-3 px-5 py-2 bg-gradient-to-r to-yellow-500 text-white rounded-lg shadow-md text-center hover:shadow-xl transition-all duration-300"
           >
             Sign Up
           </Link>
 
           <Link
             to="/login"
-            className="block mx-6 my-3 px-5 py-2 border border-pink-500 text-pink-400 rounded-lg text-center hover:bg-gray-800 hover:text-pink-300 transition-all duration-300"
+            className="block mx-6 my-3 px-5 py-2 border border-pink-500 rounded-lg text-center hover:bg-gray-800 hover:text-pink-300 transition-all duration-300"
           >
             Login
           </Link>
