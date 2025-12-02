@@ -70,7 +70,7 @@ const OurStory = () => {
                >
                   <div
                      className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                     style={{ backgroundImage: "url('/simple.jpg')" }}
+                     style={{ backgroundImage: "url('/simple1.jpg')" }}
                   >
                      <div className="absolute inset-0 bg-black/70"></div>
                   </div>
