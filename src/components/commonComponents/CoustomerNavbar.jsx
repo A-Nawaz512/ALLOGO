@@ -3,30 +3,35 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
+import { IoLanguageSharp } from "react-icons/io5";
 
 const ModernNavbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpenDesktop, setServicesOpenDesktop] = useState(false);
   const [servicesOpenMobile, setServicesOpenMobile] = useState(false);
 
+  const [langOpenDesktop, setLangOpenDesktop] = useState(false);
+  const [langOpenMobile, setLangOpenMobile] = useState(false);
+  const [selectedLang, setSelectedLang] = useState("English");
+
   const toggleMobile = () => setMobileOpen(!mobileOpen);
+  const toggleServicesDesktop = () => setServicesOpenDesktop(!servicesOpenDesktop);
+  const toggleServicesMobile = () => setServicesOpenMobile(!servicesOpenMobile);
 
-  const toggleServicesDesktop = () =>
-    setServicesOpenDesktop(!servicesOpenDesktop);
-
-  const toggleServicesMobile = () =>
-    setServicesOpenMobile(!servicesOpenMobile);
+  const toggleLangDesktop = () => setLangOpenDesktop(!langOpenDesktop);
+  const toggleLangMobile = () => setLangOpenMobile(!langOpenMobile);
 
   const servicesRef = useRef();
+  const langRef = useRef();
 
-  // CLICK OUTSIDE FOR DESKTOP ONLY
+  // CLICK OUTSIDE
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        servicesRef.current &&
-        !servicesRef.current.contains(event.target)
-      ) {
+      if (servicesRef.current && !servicesRef.current.contains(event.target)) {
         setServicesOpenDesktop(false);
+      }
+      if (langRef.current && !langRef.current.contains(event.target)) {
+        setLangOpenDesktop(false);
       }
     };
 
@@ -43,11 +48,13 @@ const ModernNavbar = () => {
     { label: "Roadside assistance", path: "/services/roadside-assistance" },
   ];
 
+  const languages = ["English", "Français", "العربية"];
+
   return (
     <nav className="bg-black text-gray-100 py-3 shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          
+        <div className="flex justify-between items-center gap-4">
+
           {/* BRAND */}
           <Link to="/" className="flex items-center space-x-2">
             <img
@@ -58,28 +65,28 @@ const ModernNavbar = () => {
           </Link>
 
           {/* DESKTOP MENU */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-6">
+
             <Link to="/" className="px-4 py-2 rounded hover:bg-[#6F4918] transition">
               Home
             </Link>
+
             <Link to="/about" className="px-4 py-2 rounded hover:bg-[#6F4918] transition">
               About
             </Link>
 
-            {/* DESKTOP SERVICES DROPDOWN */}
+            {/* SERVICES DESKTOP DROPDOWN */}
             <div className="relative" ref={servicesRef}>
               <button
                 onClick={toggleServicesDesktop}
                 className="px-4 py-2 rounded flex items-center space-x-1 hover:bg-[#6F4918]"
               >
                 <span>Services</span>
-                <span>
-                  {servicesOpenDesktop ? <FaCaretUp /> : <FaCaretDown />}
-                </span>
+                {servicesOpenDesktop ? <FaCaretUp /> : <FaCaretDown />}
               </button>
 
               {servicesOpenDesktop && (
-                <div className="absolute py-4 mt-2 w-64 bg-black border border-[#202020] rounded-lg shadow-lg animate-fadeIn">
+                <div className="absolute left-0 py-3 mt-2 w-64 bg-black border border-[#202020] rounded-lg shadow-lg animate-fadeIn">
                   {servicesList.map((item) => (
                     <Link
                       key={item.path}
@@ -99,8 +106,38 @@ const ModernNavbar = () => {
             </Link>
           </div>
 
-          {/* AUTH BUTTONS (DESKTOP) */}
-          <div className="hidden md:flex space-x-4">
+          {/* AUTH + LANGUAGE DESKTOP */}
+          <div className="hidden md:flex items-center space-x-5">
+
+            {/* LANGUAGE DROPDOWN */}
+            <div className="relative" ref={langRef}>
+              <button
+                onClick={toggleLangDesktop}
+                className="px-4 py-2 flex items-center space-x-2 rounded hover:bg-[#6F4918]"
+              >
+                <IoLanguageSharp size={18} />
+                <span>{selectedLang}</span>
+                {langOpenDesktop ? <FaCaretUp /> : <FaCaretDown />}
+              </button>
+
+              {langOpenDesktop && (
+                <div className="absolute right-0 py-2 mt-2 w-40 bg-black border border-[#202020] rounded-lg shadow-lg animate-fadeIn">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang}
+                      onClick={() => {
+                        setSelectedLang(lang);
+                        setLangOpenDesktop(false);
+                      }}
+                      className="w-full text-left px-4 py-2 hover:bg-[#6F4918] rounded"
+                    >
+                      {lang}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <Link
               to="/signup"
               className="px-5 py-2 bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] text-white rounded-lg shadow-md hover:shadow-xl"
@@ -116,7 +153,7 @@ const ModernNavbar = () => {
             </Link>
           </div>
 
-          {/* MOBILE MENU TOGGLE */}
+          {/* MOBILE MENU BUTTON */}
           <button
             onClick={toggleMobile}
             className="md:hidden text-gray-100 hover:text-[#FFD700]"
@@ -128,7 +165,7 @@ const ModernNavbar = () => {
 
       {/* MOBILE MENU */}
       {mobileOpen && (
-        <div className="md:hidden bg-black border-t border-[#202020] py-4 space-y-2 animate-fadeIn">
+        <div className="md:hidden bg-black border-t border-[#202020] py-3 space-y-2 animate-fadeIn">
 
           <Link to="/" className="block px-6 py-2 hover:bg-[#6F4918] rounded">
             Home
@@ -138,7 +175,7 @@ const ModernNavbar = () => {
             About
           </Link>
 
-          {/* MOBILE SERVICES DROPDOWN */}
+          {/* SERVICES MOBILE */}
           <button
             onClick={toggleServicesMobile}
             className="w-full px-6 py-2 flex justify-between items-center hover:bg-[#6F4918] rounded"
@@ -148,7 +185,7 @@ const ModernNavbar = () => {
           </button>
 
           {servicesOpenMobile && (
-            <div className="ml-6 space-y-2 animate-fadeIn">
+            <div className="ml-4 space-y-2 animate-fadeIn">
               {servicesList.map((item) => (
                 <Link
                   key={item.path}
@@ -166,8 +203,34 @@ const ModernNavbar = () => {
             Contact
           </Link>
 
-          {/* AUTH BUTTONS MOBILE */}
-          <div className="px-6 space-y-3 pt-4">
+          {/* LANGUAGE MOBILE */}
+          <button
+            onClick={toggleLangMobile}
+            className="w-full px-6 py-2 flex justify-between items-center hover:bg-[#6F4918] rounded"
+          >
+            Language: {selectedLang}
+            <span>{langOpenMobile ? "▲" : "▼"}</span>
+          </button>
+
+          {langOpenMobile && (
+            <div className="ml-4 space-y-2 animate-fadeIn">
+              {languages.map((lang) => (
+                <button
+                  key={lang}
+                  onClick={() => {
+                    setSelectedLang(lang);
+                    setLangOpenMobile(false);
+                  }}
+                  className="block w-full text-left px-6 py-2 hover:bg-[#6F4918] rounded"
+                >
+                  {lang}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* MOBILE AUTH BUTTONS */}
+          <div className="px-6 space-y-3 pt-3">
             <Link
               to="/signup"
               className="block text-center px-5 py-2 bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] text-white rounded-lg shadow-lg"
