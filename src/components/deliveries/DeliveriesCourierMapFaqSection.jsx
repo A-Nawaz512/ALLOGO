@@ -1,298 +1,227 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const faqs = [
-  {
-    q: "What items can I send?",
-    a: "You can send most everyday items: documents, clothing, small electronics, accessories and non-fragile parcels. Dangerous, illegal or restricted items (weapons, drugs, cash, highly valuable jewelry, chemicals, etc.) are not allowed according to our terms.",
-  },
-  {
-    q: "Is my package insured?",
-    a: "Standard deliveries include basic coverage according to ALLOGO’s conditions. For high-value items, we recommend declaring the value in the app and using additional insurance options where available.",
-  },
-  {
-    q: "How do I know my package is delivered?",
-    a: "You’ll see live status in the app, plus delivery confirmation. When possible, we also show proof of delivery, such as a photo, receiver name or signature.",
-  },
-];
-
-export default function DeliveriesCourierMapFaqSection() {
-  const [openIndex, setOpenIndex] = useState(0);
-
+const DeliveryForCouriers = () => {
   useEffect(() => {
-    AOS.init({ duration: 800, once: true });
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 60,
+      easing: "ease-out-cubic",
+    });
   }, []);
 
   return (
-    <section className="bg-gray-50 py-16 sm:py-20">
-      <div className="mx-auto overflow-hidden max-w-6xl px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20">
-        {/* ===== COURIER + MAP ROW ===== */}
-        <div className="grid gap-10 md:gap-12 md:grid-cols-2 lg:grid-cols-[1.1fr_0.95fr] items-start">
-          {/* LEFT: COURIERS */}
-          <div data-aos="fade-right" className="order-2 lg:order-none">
-            <p className="inline-flex items-center gap-2 rounded-full border border-amber-300/70 bg-amber-50 px-3 py-1 text-[11px] font-semibold text-amber-700">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              Become a courier • Earn with ALLOGO
-            </p>
+    <section className="relative w-full overflow-x-hidden bg-gradient-to-b from-white via-[#fefcf7] to-white  py-16 sm:py-20 lg:py-1 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_#E2CF7D15,_transparent_50%),radial-gradient(circle_at_70%_80%,_#6F491808,_transparent_50%)]" />
+      
+      {/* decorative elements */}
+      <div className="absolute top-1/4 right-5 w-40 h-40 rounded-full bg-gradient-to-br from-[#E2CF7D]/10 to-transparent blur-3xl" />
+      <div className="absolute bottom-1/4 left-5 w-32 h-32 rounded-full bg-gradient-to-tr from-[#6F4918]/10 to-transparent blur-3xl" />
 
-            <h2 className="mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 text-left">
-              Drive, deliver and earn — with only{" "}
-              <span className="text-amber-500">5% commission</span>
-            </h2>
-
-            <p className="mt-3 text-sm sm:text-base text-gray-600">
-              Use your scooter or car to deliver packages on your own schedule.
-              ALLOGO gives you clear jobs, transparent payouts and powerful
-              tools to manage your day.
-            </p>
-
-            {/* Courier benefits cards */}
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <BenefitCard
-                title="Fair earnings"
-                text="Keep 95% of each delivery fare. See the price and distance before you accept."
-              />
-              <BenefitCard
-                title="Flexible schedule"
-                text="Work when it suits you — evenings, weekends or full-time. You decide."
-              />
-              <BenefitCard
-                title="Clear requests"
-                text="Every job shows pickup, drop-off, distance and package size upfront."
-              />
-              <BenefitCard
-                title="Loyalty & credit"
-                text="Earn points on every delivery and unlock 1000–2000 DA of in-app credit."
-              />
-            </div>
-
-            {/* Small stats row */}
-            <div className="mt-5 grid gap-3 grid-cols-2 sm:grid-cols-3 text-xs sm:text-sm">
-              <CourierStat label="Commission" value="5% fixed" highlight />
-              <CourierStat label="Vehicle types" value="Moto & car" />
-              <CourierStat label="Payments" value="Fast & trackable" />
-            </div>
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        {/* Enhanced Header */}
+        <div
+          data-aos="fade-up"
+          className="mx-auto max-w-3xl text-center lg:text-left"
+        >
+          <div className="relative inline-block mb-1">
+            <span className="relative z-10 inline-flex items-center rounded-full bg-gradient-to-r from-[#6F4918]/8 to-[#6F4918]/4 px-5 py-1.5 text-[1rem] font-bold uppercase tracking-[0.24em] text-[#6F4918] shadow-[0_4px_15px_rgba(111,73,24,0.1)]">
+              For Couriers
+            </span>
+            <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#E2CF7D]/15 to-transparent blur-sm" />
           </div>
 
-          {/* RIGHT: MAP CARD */}
-          <div
-            data-aos="fade-left"
-            className="order-1 lg:order-none"
-          >
-            <div className="relative overflow-hidden rounded-3xl bg-white border border-gray-200 shadow-[0_18px_45px_rgba(15,23,42,0.18)]">
-              {/* top accent line */}
-              <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400" />
+          <h2 className="mt-5 text-3xl font-black leading-tight text-[#1a1206] sm:text-4xl lg:text-[2.6rem]">
+            Drive, deliver, and get paid
+            <span className="block bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] bg-clip-text text-transparent">
+              on your terms.
+            </span>
+          </h2>
 
-              {/* header */}
-              <div className="flex flex-wrap items-center justify-between gap-3 px-4 pt-4 pb-3">
-                <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-sm font-bold text-white shadow-[0_6px_18px_rgba(251,191,36,0.6)]">
-                    A
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold text-gray-700">
-                      ALLOGO • Deliveries
-                    </div>
-                    <div className="text-[11px] text-gray-400">
-                      Live map preview
-                    </div>
-                  </div>
-                </div>
-                <span className="rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-semibold text-emerald-700 border border-emerald-200">
-                  LIVE • 3D tracking
-                </span>
-              </div>
-
-              {/* map mock */}
-              <div className="relative h-52 xs:h-56 sm:h-64 overflow-hidden bg-slate-900 rounded-2xl mx-3 mb-3">
-                {/* grid */}
-                <div className="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_1px_1px,#ffffff30_1px,transparent_0)] bg-[length:22px_22px]" />
-
-                {/* route path */}
-                <svg
-                  viewBox="0 0 400 240"
-                  className="absolute inset-0 h-full w-full opacity-80"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M10 220 C80 185,135 145,195 155 S330 120,390 35"
-                    stroke="#fbbf24"
-                    strokeWidth="3"
-                    fill="none"
-                    strokeDasharray="6 7"
-                  />
-                </svg>
-
-                {/* pins */}
-                <MapPin label="Pickup" className="left-[10%] bottom-[22%]" />
-                <MapPin label="Drop-off" className="right-[8%] top-[18%]" />
-
-                {/* couriers */}
-                <CourierDot className="left-[27%] bottom-[40%]" />
-                <CourierDot className="left-[55%] top-[42%]" />
-                <CourierDot className="left-[78%] top-[27%]" />
-
-                {/* info card */}
-                <div className="absolute left-3 top-3 rounded-xl bg-black/70 px-3 py-2 text-[11px] text-slate-100 backdrop-blur border border-white/10 max-w-[80%] sm:max-w-xs">
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="font-medium">Medium box • 4 km</span>
-                    <span className="rounded-full bg-amber-400/30 px-2 py-0.5 text-[10px] text-amber-100">
-                      ETA 24 min
-                    </span>
-                  </div>
-                  <p className="mt-1 text-[10px] text-slate-200">
-                    Courier assigned • live tracking enabled
-                  </p>
-                </div>
-
-                {/* price pill */}
-                <div className="absolute bottom-3 right-3 rounded-full bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-900 shadow-md">
-                  620 DA • Est. delivery
-                </div>
-              </div>
-
-              {/* footer text */}
-              <div className="px-4 pb-4 text-[12px] text-gray-600 border-t border-gray-100">
-                Live MapLibre 3D tracking lets senders and couriers see each
-                other in real time — from pickup to drop-off.
-              </div>
-            </div>
-          </div>
+          <p className="mt-4 text-sm text-gray-700 sm:text-base max-w-2xl leading-relaxed">
+            Use your bike, scooter, or car to earn extra income with clear
+            commissions, instant job alerts, and a live earnings overview inside
+            the AILOGO app.
+          </p>
         </div>
 
-        {/* ===== FAQ ===== */}
-        <div className="grid gap-10 lg:gap-12 lg:grid-cols-2 items-start">
-          {/* FAQ intro */}
-          <div data-aos="fade-right">
-            <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold text-slate-700">
-              FAQ • Deliveries on ALLOGO
-            </p>
-            <h3 className="mt-3 text-xl sm:text-2xl font-semibold text-gray-900">
-              Answers to common delivery questions
-            </h3>
-            <p className="mt-2 text-sm sm:text-base text-gray-600">
-              Whether you’re sending a package or delivering it, these quick
-              answers explain how ALLOGO keeps your deliveries safe, clear and
-              transparent.
-            </p>
+        {/* ENHANCED MAIN LAYOUT */}
+        <div
+          data-aos="fade-up"
+          data-aos-delay="120"
+          className="mt-12 flex w-full flex-col gap-10 rounded-[2rem] border border-[#E2CF7D]/50 bg-gradient-to-br from-white via-[#fefcf7] to-white p-5 shadow-[0_25px_60px_rgba(111,73,24,0.12)] sm:p-6 lg:mt-14 lg:flex-row lg:items-center lg:gap-8 lg:p-8 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:to-[#FFF8E5]/20 before:content-['']"
+        >
+          {/* LEFT – ENHANCED EARNINGS CARD */}
+          <div className="w-full lg:max-w-[480px]">
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-[#E2CF7D]/70 bg-gradient-to-br from-[#6F4918] via-[#8a5b23] to-[#E2CF7D] p-[2px] shadow-[0_25px_60px_rgba(111,73,24,0.4)]">
+              <div className="flex h-full flex-col rounded-[2rem] bg-gradient-to-br from-[#1b1307]/98 to-[#2d1a0c]/95 px-6 py-6 sm:px-8 sm:py-7 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:to-black/20 before:content-['']">
+                {/* glow effect */}
+                <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-[#E2CF7D]/10 via-transparent to-transparent" />
+                
+                <div className="relative z-10 inline-flex items-center rounded-full bg-gradient-to-r from-white/8 to-transparent px-4 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.25em] text-[#E2CF7D] shadow-[0_0_20px_rgba(226,207,125,0.2)]">
+                  Earn with every delivery
+                </div>
 
-            <div className="mt-6 rounded-2xl bg-white border border-amber-100 px-4 py-4 text-[12px] sm:text-sm text-amber-800 shadow-sm">
-              <span className="font-semibold text-amber-700">
-                Need more help?
-              </span>{" "}
-              Use the in-app support chat to contact our team directly after you
-              book or complete a delivery.
+                <h3 className="relative z-10 mt-5 text-2xl font-bold text-white sm:text-3xl">
+                  Keep 95% of every delivery fare.
+                </h3>
+
+                <p className="relative z-10 mt-3 text-sm text-gray-200 sm:text-base leading-relaxed">
+                  AILOGO charges a simple{" "}
+                  <span className="font-bold text-[#E2CF7D]">5%</span> commission on each
+                  completed trip. No hidden fees — you always see your net
+                  earnings before you accept.
+                </p>
+
+                {/* Enhanced Example earning */}
+                <div className="relative z-10 mt-6 rounded-2xl bg-gradient-to-br from-white/8 to-white/4 p-5 text-sm text-[#FDF6E7] backdrop-blur-sm border border-white/10">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="h-2 w-2 rounded-full bg-gradient-to-r from-[#E2CF7D] to-[#f8e6a9]" />
+                    <p className="font-bold">Example earning</p>
+                  </div>
+                  <div className="mt-4 grid gap-5 text-xs sm:grid-cols-3 sm:text-sm">
+                    <div className="text-center">
+                      <p className="text-gray-300">Delivery price</p>
+                      <p className="text-xl font-bold text-[#E2CF7D] mt-1">
+                        1,000&nbsp;DA
+                      </p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-gray-300">You receive (95%)</p>
+                      <p className="text-xl font-bold text-white mt-1">
+                        950&nbsp;DA
+                      </p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-gray-300">AILOGO (5%)</p>
+                      <p className="text-xl font-bold text-gray-300 mt-1">
+                        50&nbsp;DA
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* enhanced chips + CTA */}
+                <div className="relative z-10 mt-7 flex flex-wrap items-center justify-between gap-4 text-xs text-gray-200 sm:text-sm">
+                  <div className="flex flex-wrap gap-3">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-white/8 to-white/4 px-3.5 py-1.5 backdrop-blur-sm border border-white/10">
+                      <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#E2CF7D] to-[#f8e6a9]" />
+                      Daily & weekly earning breakdowns
+                    </span>
+                    <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-white/8 to-white/4 px-3.5 py-1.5 backdrop-blur-sm border border-white/10">
+                      <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#E2CF7D] to-[#f8e6a9]" />
+                      Earnings update after every trip
+                    </span>
+                  </div>
+
+                  <button className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#E2CF7D] to-[#f7e7a2] px-6 py-2.5 text-xs font-bold text-[#2b1a08] shadow-[0_8px_25px_rgba(226,207,125,0.4)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(226,207,125,0.5)]">
+                    Become a courier
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* FAQ accordion */}
-          <div
-            data-aos="fade-left"
-            className="space-y-3"
-          >
-            {faqs.map((item, index) => (
-              <FAQItem
-                key={item.q}
-                item={item}
-                isOpen={openIndex === index}
-                onClick={() =>
-                  setOpenIndex(openIndex === index ? -1 : index)
-                }
-              />
-            ))}
+          {/* RIGHT – ENHANCED 3 FEATURE CARDS */}
+          <div className="grid w-full flex-1 gap-6 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            {/* ENHANCED CARD 1 – Vehicle requirements */}
+            <div className="group relative flex flex-col rounded-2xl border border-[#E2CF7D]/60 bg-gradient-to-br from-white via-[#FFF8E5] to-[#F5E4B880] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_25px_50px_rgba(111,73,24,0.15)] before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:to-[#FFF8E5]/30 before:content-['']">
+              <div className="relative mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#6F4918] to-[#E2CF7D] text-[0.7rem] font-bold text-white shadow-[0_8px_20px_rgba(111,73,24,0.3)] group-hover:scale-110 transition-transform duration-300">
+                <div className="h-4 w-6 rounded-md border border-white/85" />
+              </div>
+
+              <h3 className="text-sm font-bold text-[#2b1a08] sm:text-base group-hover:text-[#6F4918] transition-colors">
+                Vehicle requirements
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                Use a <span className="font-bold text-[#6F4918]">bike, scooter, or car</span> in
+                good condition, insured and ready to safely carry packages.
+              </p>
+
+              <ul className="mt-4 space-y-2 text-xs text-gray-700">
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#6F4918] to-[#E2CF7D]" />
+                  Valid local driving documents.
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#6F4918] to-[#E2CF7D]" />
+                  Smartphone with GPS &amp; internet.
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#6F4918] to-[#E2CF7D]" />
+                  Ability to follow navigation &amp; timing.
+                </li>
+              </ul>
+
+              <div className="mt-5 h-1 w-12 rounded-full bg-gradient-to-r from-[#6F4918] via-[#E2CF7D] to-transparent transition-all duration-300 group-hover:w-20 group-hover:shadow-[0_0_10px_rgba(226,207,125,0.3)]" />
+            </div>
+
+            {/* ENHANCED CARD 2 – 5% Commission */}
+            <div className="group relative flex flex-col rounded-2xl border border-[#E2CF7D]/60 bg-gradient-to-br from-white via-[#FFF8E5] to-[#F5E4B880] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_25px_50px_rgba(111,73,24,0.15)] before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:to-[#FFF8E5]/30 before:content-['']">
+              <div className="relative mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#6F4918] to-[#E2CF7D] text-[0.8rem] font-bold text-white shadow-[0_8px_20px_rgba(111,73,24,0.3)] group-hover:scale-110 transition-transform duration-300">
+                %
+              </div>
+
+              <h3 className="text-sm font-bold text-[#2b1a08] sm:text-base group-hover:text-[#6F4918] transition-colors">
+                Simple 5% commission
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                A flat <span className="font-bold text-[#6F4918]">5% fee</span> on every completed
+                delivery. No subscription, no extra platform costs.
+              </p>
+
+              <p className="mt-3 text-xs text-gray-700 bg-gradient-to-r from-[#FFF9EA]/30 to-transparent p-3 rounded-lg">
+                You see the gross price, commission, and your net earnings{" "}
+                <span className="font-bold">before</span> you tap accept.
+              </p>
+
+              <div className="mt-5 h-1 w-12 rounded-full bg-gradient-to-r from-[#6F4918] via-[#E2CF7D] to-transparent transition-all duration-300 group-hover:w-20 group-hover:shadow-[0_0_10px_rgba(226,207,125,0.3)]" />
+            </div>
+
+            {/* ENHANCED CARD 3 – Notifications & earnings */}
+            <div className="group relative flex flex-col rounded-2xl border border-[#E2CF7D]/60 bg-gradient-to-br from-white via-[#FFF8E5] to-[#F5E4B880] p-5 shadow-[0_12px_35px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_25px_50px_rgba(111,73,24,0.15)] before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:to-[#FFF8E5]/30 before:content-[''] md:col-span-2 lg:col-span-1 xl:col-span-2">
+              <div className="relative mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#6F4918] to-[#E2CF7D] text-[0.7rem] font-bold text-white shadow-[0_8px_20px_rgba(111,73,24,0.3)] group-hover:scale-110 transition-transform duration-300">
+                <div className="h-4 w-4 rounded-sm border border-white/85" />
+              </div>
+
+              <h3 className="text-sm font-bold text-[#2b1a08] sm:text-base group-hover:text-[#6F4918] transition-colors">
+                Job notifications &amp; earnings
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                Requests appear based on your location with pickup, drop-off,
+                distance, and payout clearly shown.
+              </p>
+
+              <ul className="mt-4 space-y-2 text-xs text-gray-700">
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#6F4918] to-[#E2CF7D]" />
+                  Accept or decline in a single tap.
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#6F4918] to-[#E2CF7D]" />
+                  Live trip tracking until the receiver confirms.
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#6F4918] to-[#E2CF7D]" />
+                  Balance updates instantly after each delivery.
+                </li>
+              </ul>
+
+              <div className="mt-5 rounded-2xl bg-gradient-to-r from-[#FFF9EA] to-[#FFF3C2] p-4 text-xs text-[#3b2412] shadow-inner shadow-[#E2CF7D]/20">
+                View your earnings history by{" "}
+                <span className="font-bold text-[#6F4918]">day, week, or month</span> and see
+                exactly how much you've made with AILOGO.
+              </div>
+
+              <div className="mt-5 h-1 w-12 rounded-full bg-gradient-to-r from-[#6F4918] via-[#E2CF7D] to-transparent transition-all duration-300 group-hover:w-20 group-hover:shadow-[0_0_10px_rgba(226,207,125,0.3)]" />
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
-}
+};
 
-/* === Small presentational components === */
-
-function BenefitCard({ title, text }) {
-  return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-[0_8px_24px_rgba(15,23,42,0.06)] hover:shadow-[0_12px_32px_rgba(15,23,42,0.10)] transition-shadow duration-200">
-      <div className="flex items-center gap-2">
-        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-amber-100 text-amber-600 text-sm">
-          ⭐
-        </span>
-        <h4 className="text-sm font-semibold text-gray-900">{title}</h4>
-      </div>
-      <p className="mt-2 text-xs sm:text-sm text-gray-600 leading-relaxed">
-        {text}
-      </p>
-    </div>
-  );
-}
-
-function CourierStat({ label, value, highlight }) {
-  return (
-    <div
-      className={`rounded-xl border px-3 py-3 shadow-sm bg-white ${
-        highlight
-          ? "border-amber-400/70 bg-amber-50/80 text-amber-800"
-          : "border-gray-200 text-gray-700"
-      }`}
-    >
-      <div className="text-[11px] uppercase tracking-wide text-gray-400">
-        {label}
-      </div>
-      <div className="mt-1 text-sm font-semibold">{value}</div>
-    </div>
-  );
-}
-
-function CourierDot({ className = "" }) {
-  return (
-    <div className={`absolute ${className}`}>
-      <span className="absolute inline-flex h-4 w-4 animate-ping rounded-full bg-amber-400/60" />
-      <span className="relative inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-400 text-[9px] text-slate-900 font-bold">
-        🚚
-      </span>
-    </div>
-  );
-}
-
-function MapPin({ className = "", label }) {
-  return (
-    <div className={`absolute flex flex-col items-center ${className}`}>
-      <div className="relative flex h-4 w-4 items-center justify-center">
-        <span className="absolute h-6 w-6 rounded-full bg-red-500/18" />
-        <span className="relative h-3 w-3 rounded-full bg-red-500 border border-white" />
-      </div>
-      <span className="mt-1 text-[9px] text-slate-100 bg-black/70 px-1.5 py-0.5 rounded-full border border-white/10">
-        {label}
-      </span>
-    </div>
-  );
-}
-
-function FAQItem({ item, isOpen, onClick }) {
-  return (
-    <div className="rounded-2xl border border-gray-200 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
-      <button
-        onClick={onClick}
-        className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left"
-      >
-        <span className="text-sm sm:text-base font-semibold text-gray-900">
-          {item.q}
-        </span>
-        <span
-          className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border text-xs transition-colors ${
-            isOpen
-              ? "border-amber-400 bg-amber-50 text-amber-600"
-              : "border-gray-300 bg-gray-50 text-gray-500"
-          }`}
-        >
-          {isOpen ? "-" : "+"}
-        </span>
-      </button>
-      {isOpen && (
-        <div className="border-t border-gray-100 px-4 py-3 text-xs sm:text-sm text-gray-600">
-          {item.a}
-        </div>
-      )}
-    </div>
-  );
-}
+export default DeliveryForCouriers;

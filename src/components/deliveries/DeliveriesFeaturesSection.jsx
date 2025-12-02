@@ -2,245 +2,118 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const features = [
-  {
-    title: "Same-day delivery in your city",
-    desc: "Send urgent documents and parcels across your city in just a few hours.",
-  },
-  {
-    title: "Pickup & drop-off anywhere",
-    desc: "Choose precise pickup and drop-off points that work for you and your recipient.",
-  },
-  {
-    title: "Package size options",
-    desc: "Select small, medium or large so couriers know exactly what to expect.",
-  },
-  {
-    title: "Real-time courier tracking",
-    desc: "Follow your courier on the map from pickup to delivery with live status updates.",
-  },
-  {
-    title: "Proof of delivery",
-    desc: "Get in-app delivery confirmation, plus photo or recipient confirmation when available.",
-  },
-  {
-    title: "Only 5% commission for couriers",
-    desc: "Fair pricing for couriers so the service stays competitive, stable and reliable.",
-  },
-];
-
-const steps = [
-  {
-    label: "Step 1",
-    title: "Describe your package & addresses",
-    text: "Enter pickup & drop-off locations, choose the package size and add notes for the courier.",
-  },
-  {
-    label: "Step 2",
-    title: "Get an instant delivery estimate",
-    text: "See the price and ETA before confirming so you always know what you'll pay.",
-  },
-  {
-    label: "Step 3",
-    title: "Courier picks up your package",
-    text: "A nearby courier accepts the request and confirms pickup inside the app.",
-  },
-  {
-    label: "Step 4",
-    title: "Track live & receive confirmation",
-    text: "Watch the route in real time and get proof of delivery instantly.",
-  },
-];
-
-export default function DeliveriesFeaturesSection() {
+const DeliveryHowItWorks = () => {
   useEffect(() => {
-    AOS.init({ duration: 800, once: true });
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 60,
+      easing: "ease-out-cubic",
+    });
   }, []);
 
+  const steps = [
+    {
+      id: 1,
+      title: "Enter pickup & drop-off locations",
+      text: "Pin where the courier should collect your package and where it needs to go. We use precise map locations so nothing gets lost.",
+    },
+    {
+      id: 2,
+      title: "Add package type & notes",
+      text: "Tell us what you're sending—documents, boxes, fragile items—and add any special instructions for the courier.",
+    },
+    {
+      id: 3,
+      title: "Get matched with a courier",
+      text: "AlLOGO connects you with a nearby courier using a scooter or car, depending on distance and package size.",
+    },
+    {
+      id: 4,
+      title: "Track live & get delivery confirmation",
+      text: "Watch your courier move in real time on the 3D map. Once the receiver gets the package, they confirm delivery in the app.",
+    },
+  ];
+
   return (
-    <section className="relative bg-gradient-to-b from-white to-amber-50/30 py-14 sm:py-20 overflow-x-clip">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 text-black">
-        {/* HEADER */}
-        <div
-          data-aos="fade-up"
-          className="max-w-3xl text-center md:text-left mx-auto md:mx-0"
-        >
-          <p className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-amber-300/60 bg-gradient-to-r from-amber-50 to-yellow-50 px-3 py-1.5 text-[10px] xs:text-[11px] font-semibold text-amber-700 shadow-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            ALLOGO Deliveries • Features
+    // prevent any child from causing horizontal scroll
+    <section className="relative w-full overflow-x-hidden bg-white py-16 sm:py-20 lg:py-18 overflow-hidden">
+      {/* Soft background glow */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_#E2CF7D26,_transparent_55%),linear-gradient(to_bottom,_#fff,_#fff)]" />
+
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="max-w-3xl" data-aos="fade-up">
+          <p className="inline-flex items-center rounded-full bg-[#6F4918]/6 px-4 py-1 text-[1rem] font-semibold uppercase tracking-[0.24em] text-[#6F4918]">
+            For Clients • How it Works
           </p>
 
-          <h2 className="mt-4 text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-gray-900 leading-snug">
-            Everything you need for fast, reliable deliveries
+          <h2 className="mt-4 text-3xl font-bold leading-snug text-[#1a1206] sm:text-4xl lg:text-[2.75rem]">
+            Send a package in just four simple steps.
           </h2>
 
-          <p className="mt-3 text-gray-600 text-xs xs:text-sm sm:text-base max-w-xl mx-auto md:mx-0">
-            ALLOGO Deliveries makes sending packages effortless — with clear
-            prices, fast couriers and real-time tracking from pickup to
-            drop-off.
+          <p className="mt-3 text-sm text-gray-600 sm:text-base">
+            From entering your pickup location to delivery confirmation, AlLOGO
+            keeps every step clear, fast, and fully tracked in real time.
           </p>
         </div>
 
-        {/* FEATURES GRID */}
+        {/* Divider */}
+        <div className="mt-8 h-px w-full rounded-full mt-[-14px]
+  bg-gradient-to-r from-[#6F4918]/5 via-[#E2CF7D]/40 to-[#6F4918]/5" />
+
+        {/* Steps grid */}
         <div
+          className="mt-10 grid w-full gap-6 md:mt-12 md:grid-cols-2 xl:grid-cols-4"
           data-aos="fade-up"
-          data-aos-delay="100"
-          className="mt-10 grid gap-4 xs:gap-5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+          data-aos-delay="80"
         >
-          {features.map((f, i) => (
-            <article
-              key={i}
-              className="group relative w-full overflow-hidden rounded-2xl border border-gray-200 
-                bg-gradient-to-br from-white via-white to-amber-50/50 p-4 xs:p-5
-                shadow-[0_10px_30px_rgba(251,191,36,0.08)]
-                transition-all duration-300
-                hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(251,191,36,0.15)]
-                hover:border-amber-300/50"
+          {steps.map((step, index) => (
+            <div
+              key={step.id}
+              data-aos="fade-up"
+              data-aos-delay={120 + index * 60}
+              className="group relative flex h-full flex-col rounded-3xl border border-[#E2CF7D]/70 bg-gradient-to-b from-white via-[#FFF9EA] to-white p-6 shadow-[0_18px_45px_rgba(0,0,0,0.04)] transition-all duration-200 hover:-translate-y-2 hover:border-[#E2CF7D] hover:shadow-[0_26px_70px_rgba(0,0,0,0.10)]"
             >
-              <span
-                className="pointer-events-none absolute inset-x-0 top-0 h-1 
-                  bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400"
-              />
+              {/* Glow behind badge */}
+              <div className="pointer-events-none absolute -top-6 left-8 h-12 w-12 rounded-full bg-[#E2CF7D]/40 blur-xl opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
 
-              <div className="flex items-start gap-3">
-                <div
-                  className="mt-1 flex h-8 w-8 sm:h-9 sm:w-9 flex-none items-center justify-center 
-                    rounded-xl bg-gradient-to-br from-amber-400 to-amber-500 
-                    text-[11px] sm:text-xs font-semibold text-white 
-                    shadow-[0_6px_20px_rgba(251,191,36,0.8)] 
-                    group-hover:scale-105 transition-transform duration-300"
-                >
-                  {i + 1}
+              {/* Step badge row */}
+              <div className="mb-4 flex items-center gap-3">
+                <div className="relative flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#6F4918] to-[#E2CF7D] text-xs font-semibold text-white shadow-md">
+                  <span className="relative z-10">{step.id}</span>
+                  <div className="absolute inset-1 rounded-2xl border border-white/30" />
                 </div>
-
-                <div>
-                  <h3 className="text-sm sm:text-[15px] font-semibold text-gray-900 leading-snug">
-                    {f.title}
-                  </h3>
-                  <p className="mt-1.5 text-xs sm:text-sm text-gray-600 leading-relaxed">
-                    {f.desc}
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-[10px] xs:text-[11px] text-gray-400">
-                <span className="inline-flex items-center gap-1">
-                  <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />
-                  Optimised for everyday use
-                </span>
-
-                <span className="font-medium text-amber-600 flex-shrink-0">
-                  ALLOGO
+                <span className="rounded-full bg-[#6F4918]/7 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-[#6F4918]">
+                  Step {step.id}
                 </span>
               </div>
-            </article>
-          ))}
-        </div>
 
-        {/* HOW IT WORKS */}
-        <div className="mt-14 sm:mt-20">
-          <div
-            data-aos="fade-up"
-            className="max-w-2xl text-center md:text-left mx-auto md:mx-0"
-          >
-            <p
-              className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-slate-200 
-                bg-gradient-to-r from-slate-50 to-gray-50 px-3 py-1.5
-                text-[10px] xs:text-[11px] font-semibold text-slate-700 shadow-sm"
-            >
-              Sender flow • 4 simple steps
-            </p>
-
-            <h3 className="mt-3 text-lg xs:text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900">
-              How deliveries work for senders
-            </h3>
-
-            <p className="mt-2 text-gray-600 text-xs xs:text-sm sm:text-base max-w-lg mx-auto md:mx-0">
-              A clear flow from booking to delivery confirmation — so you always
-              know what's happening with your package.
-            </p>
-          </div>
-
-          {/* STEPS GRID */}
-          <div
-            data-aos="fade-up"
-            data-aos-delay="100"
-            className="mt-10 grid gap-5 xs:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {steps.map((step, i) => (
-              <article
-                key={i}
-                className="group relative flex flex-col w-full rounded-2xl 
-                  border border-gray-200 bg-gradient-to-b from-white to-amber-50/30 
-                  p-4 xs:p-5 shadow-[0_10px_30px_rgba(15,23,42,0.07)]
-                  transition-all duration-300 hover:-translate-y-1.5 
-                  hover:shadow-[0_20px_50px_rgba(251,191,36,0.12)]
-                  hover:border-amber-300/50"
-              >
-                <div className="flex flex-wrap items-center gap-2">
-                  <span
-                    className="flex h-7 w-7 items-center justify-center rounded-full 
-                      bg-gradient-to-br from-amber-400 to-amber-500 
-                      text-[10px] xs:text-[11px] font-bold text-white 
-                      shadow-[0_6px_20px_rgba(251,191,36,0.8)] 
-                      group-hover:scale-110 transition-transform duration-300"
-                  >
-                    {i + 1}
-                  </span>
-
-                  <span
-                    className="rounded-full border border-amber-300/70 
-                      bg-gradient-to-r from-amber-50 to-yellow-50 
-                      px-2 py-0.5 text-[9px] xs:text-[10px] font-semibold text-amber-700"
-                  >
-                    {step.label}
-                  </span>
-                </div>
-
-                <h4 className="mt-3 text-sm sm:text-[15px] font-semibold text-gray-900">
+              {/* Main content */}
+              <div className="flex-1">
+                <h3 className="text-[1.05rem] font-semibold text-[#2b1a08] sm:text-[1.1rem]">
                   {step.title}
-                </h4>
-
-                <p className="mt-2 text-xs sm:text-sm text-gray-600 leading-relaxed">
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-gray-600">
                   {step.text}
                 </p>
+              </div>
 
-                <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-[10px] xs:text-[11px] text-gray-400">
-                  <span>Inside the ALLOGO app</span>
-                  {i === steps.length - 1 && (
-                    <span className="font-medium text-emerald-600 animate-pulse flex-shrink-0">
-                      Delivery confirmed ✓
-                    </span>
-                  )}
+              {/* Bottom accent & dots */}
+              <div className="mt-6 flex items-center justify-between">
+                <div className="h-1 w-16 rounded-full bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] transition-all duration-200 group-hover:w-24" />
+                <div className="flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#6F4918]/40" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#6F4918]/30" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#6F4918]/20" />
                 </div>
-              </article>
-            ))}
-          </div>
-
-          {/* BONUS CARD */}
-          <div
-            data-aos="fade-up"
-            data-aos-delay="150"
-            className="mt-10 rounded-2xl border border-amber-300/50 
-              bg-gradient-to-r from-amber-50 via-amber-50/80 to-yellow-50 
-              px-4 xs:px-5 py-4 text-xs xs:text-sm sm:text-base
-              shadow-[0_10px_40px_rgba(251,191,36,0.25)]
-              transition-all duration-300 hover:scale-[1.01]"
-          >
-            <span className="font-semibold text-amber-700">
-              Bonus for couriers:{" "}
-            </span>
-            <span className="text-amber-800">
-              Earn loyalty points on every completed delivery and unlock credit
-              between{" "}
-              <span className="font-semibold text-amber-900">
-                1000–2000 DA
-              </span>
-              , repaid automatically through your commissions.
-            </span>
-          </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default DeliveryHowItWorks;
