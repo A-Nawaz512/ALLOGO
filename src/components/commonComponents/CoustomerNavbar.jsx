@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
-import logo from "../../assets/AIlogo.png";
+
+import { FaCaretDown } from "react-icons/fa";
+import { FaCaretUp } from "react-icons/fa";
 
 const ModernNavbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -11,6 +13,9 @@ const ModernNavbar = () => {
   const toggleMobile = () => setMobileOpen(!mobileOpen);
   const toggleServices = () => setServicesOpen(!servicesOpen);
 
+
+  
+
   return (
     <nav className="bg-black text-gray-100 py-3 shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,13 +23,11 @@ const ModernNavbar = () => {
           {/* Brand */}
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src={logo}
+              src='/ailogo.png'
               alt="Logo"
-              className="h-15 w-auto lg:h-15 lg:w-auto"
+              className="h-10 w-auto lg:h-12 bg-black-400/20 shadow-sm shadow-[#755023] rounded-lg lg:w-auto"
             />
-            {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DEB74B] via-[#F1C27D] to-[#FFD700] text-3xl font-semibold font-mono">
-              AI LOGO
-            </span> */}
+           
           </Link>
 
           {/* DESKTOP MENU */}
@@ -49,20 +52,23 @@ const ModernNavbar = () => {
                 className="px-4 py-2 rounded flex items-center space-x-1 font-medium transition-all duration-300 hover:bg-[#6F4918]"
               >
                 <span>Services</span>
-                <span>{servicesOpen ? "▲" : "▼"}</span>
+                <span>{servicesOpen ? <FaCaretUp /> : <FaCaretDown />}</span>
               </button>
 
               {servicesOpen && (
-                <div className="absolute mt-2 w-64 md:w-52 bg-black border border-[#202020] rounded-lg shadow-lg animate-fadeIn">
+                <div className="absolute py-4 mt-2 w-64 md:w-52 bg-black border border-[#202020] rounded-lg shadow-lg animate-fadeIn">
                   {[
-                    { label: "Rides", path: "/services/rides" },
-                    { label: "Deliveries", path: "/services/deliveries" },
-                    { label: "Rentals", path: "/services/rentals" },
-                    { label: "Apartments", path: "/services/apartments" },
+                    { label: "VTC / Passenger transport", path: "/services/rides" },
+                    { label: "Delivery / Courier", path: "/services/deliveries" },
+                    { label: "Vehicle rental", path: "/services/rentals" },
+                    { label: "Apartment rental", path: "/services/apartments" },
+                    { label: "Food delivery", path: "/services/food-delivery" },
+                    { label: "Roadside assistance", path: "/services/roadside-assistance" },
                   ].map((item) => (
                     <Link
                       key={item.path}
                       to={item.path}
+                      onClick={()=>setServicesOpen(false)}
                       className="block px-4 py-2 text-gray-100 rounded-md transition-all duration-300 hover:bg-[#6F4918]"
                     >
                       {item.label}
