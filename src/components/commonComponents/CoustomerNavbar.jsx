@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
 import logo from "../../assets/AIlogo.png";
+import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 
 const ModernNavbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
