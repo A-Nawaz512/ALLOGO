@@ -20,7 +20,7 @@ const ModernNavbar = () => {
           {/* Brand */}
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src='src/assets/AIlogo.png'
+              src='src/assets/logo.png'
               alt="Logo"
               className="h-10 w-auto lg:h-12 bg-black-400/20 shadow-sm shadow-[#755023] rounded-lg lg:w-auto"
             />
