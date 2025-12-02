@@ -35,7 +35,7 @@ const OurStory = () => {
    }, []);
 
    return (
-      <section className="min-h-screen py-20 px-6 lg:px-8 bg-[#DCC878]">
+      <section className="min-h-screen py-20 px-6 lg:px-8 bg-[#DCC885]">
          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
                <h2

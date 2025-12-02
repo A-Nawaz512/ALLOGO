@@ -73,7 +73,7 @@ const HeroSection = () => {
                      data-aos="fade-up"
                      data-aos-delay="300"
                   >
-                     <div className="bg-[#2a2a2a] p-4 rounded-lg border border-white transform transition-transform duration-300 hover:scale-105">
+                     <div className="bg-[#2a2a2a] p-4 rounded-lg border border-white transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#E2CF7D]/30">
                         <FaCar className="text-[#E2CF7D] text-2xl mb-2" />
                         <p className="text-gray-200 font-semibold">
                            6 Services
@@ -82,7 +82,7 @@ const HeroSection = () => {
                            Integrated Platform
                         </p>
                      </div>
-                     <div className="bg-[#2a2a2a] p-4 rounded-lg border border-white transform transition-transform duration-300 hover:scale-105">
+                     <div className="bg-[#2a2a2a] p-4 rounded-lg border border-white transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#E2CF7D]/30">
                         <FaMapMarkedAlt className="text-[#E2CF7D] text-2xl mb-2" />
                         <p className="text-gray-200 font-semibold">
                            3D Live Map
@@ -91,7 +91,7 @@ const HeroSection = () => {
                            Real-time Tracking
                         </p>
                      </div>
-                     <div className="bg-[#2a2a2a] p-4 rounded-lg border border-white transform transition-transform duration-300 hover:scale-105">
+                     <div className="bg-[#2a2a2a] p-4 rounded-lg border border-white transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#E2CF7D]/30">
                         <FaShieldAlt className="text-[#E2CF7D] text-2xl mb-2" />
                         <p className="text-gray-200 font-semibold">Secure</p>
                         <p className="text-gray-400 text-sm">
