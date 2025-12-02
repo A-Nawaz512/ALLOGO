@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
-import logo from "../../assets/AIlogo.png";
+
 import { FaCaretDown } from "react-icons/fa";
 import { FaCaretUp } from "react-icons/fa";
 
@@ -20,9 +20,9 @@ const ModernNavbar = () => {
           {/* Brand */}
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src={logo}
+              src='src/assets/AIlogo.png'
               alt="Logo"
-              className="h-15 w-auto lg:h-15 lg:w-auto"
+              className="h-10 w-auto lg:h-12 bg-black-400/20 shadow-sm shadow-[#755023] rounded-lg lg:w-auto"
             />
            
           </Link>
