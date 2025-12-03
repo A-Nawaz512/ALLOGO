@@ -154,7 +154,7 @@ const ZoneCoverage = () => {
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
             Seamless delivery network across all zones with intelligent routing
-            and real-time tracking
+            and real time tracking
           </p>
         </div>
 
