@@ -46,20 +46,20 @@ const HeroSection = () => {
          </div>
 
          <div className="max-w-6xl mx-auto relative z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-               <div className="animate-fadeIn">
+            <div className="max-w-6xl">
+               <div className="animate-fadeIn w-[60%] mx-auto flex flex-col items-center gap-4">
                   <h1
-                     className="text-5xl md:text-6xl font-bold mb-6"
+                     className="text-5xl text-center md:text-6xl font-bold mb-6"
                      data-aos="fade-right"
                      data-aos-delay="100"
                   >
                      <span className="text-white">Revolutionizing</span>{" "}
-                     <span className="bg-gradient-to-r from-[#6F4918] via-[#6F4918] to-[#E2CF7D] bg-clip-text text-transparent">
+                     <span className="bg-linear-to-r from-[#6F4918] via-[#6F4918] to-[#E2CF7D] bg-clip-text text-transparent">
                         Mobility & Services
                      </span>
                   </h1>
                   <p
-                     className="text-white text-lg mb-8 leading-relaxed"
+                     className="text-white text-center text-lg mb-8 leading-relaxed"
                      data-aos="fade-right"
                      data-aos-delay="200"
                   >
@@ -73,7 +73,7 @@ const HeroSection = () => {
                      data-aos="fade-up"
                      data-aos-delay="300"
                   >
-                     <div className="bg-[#2a2a2a] p-4 rounded-lg border border-white transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#E2CF7D]/30">
+                     <div className=" p-4 rounded-lg border border-white transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#E2CF7D]/30">
                         <FaCar className="text-[#E2CF7D] text-2xl mb-2" />
                         <p className="text-gray-200 font-semibold">
                            6 Services
@@ -82,7 +82,7 @@ const HeroSection = () => {
                            Integrated Platform
                         </p>
                      </div>
-                     <div className="bg-[#2a2a2a] p-4 rounded-lg border border-white transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#E2CF7D]/30">
+                     <div className=" p-4 rounded-lg border border-white transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#E2CF7D]/30">
                         <FaMapMarkedAlt className="text-[#E2CF7D] text-2xl mb-2" />
                         <p className="text-gray-200 font-semibold">
                            3D Live Map
@@ -91,7 +91,7 @@ const HeroSection = () => {
                            Real-time Tracking
                         </p>
                      </div>
-                     <div className="bg-[#2a2a2a] p-4 rounded-lg border border-white transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#E2CF7D]/30">
+                     <div className=" p-4 rounded-lg border border-white transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#E2CF7D]/30">
                         <FaShieldAlt className="text-[#E2CF7D] text-2xl mb-2" />
                         <p className="text-gray-200 font-semibold">Secure</p>
                         <p className="text-gray-400 text-sm">
@@ -101,51 +101,7 @@ const HeroSection = () => {
                   </div>
                </div>
 
-               <div className="flex items-center justify-center">
-                  <div
-                     className="relative bg-gradient-to-br from-[#6F4918] to-[#E2CF7D] w-fit p-1 rounded-2xl transition-transform duration-500 hover:rotate-1 md:hover:rotate-2"
-                     data-aos="fade-left"
-                     data-aos-delay="400"
-                  >
-                     <div className="bg-[#202020] rounded-2xl p-12">
-                        <h3 className="text-2xl font-bold text-gray-100 mb-4">
-                           Core Features
-                        </h3>
-                        <ul className="space-y-4">
-                           <li className="flex items-center">
-                              <div className="w-2 h-2 bg-[#E2CF7D] rounded-full mr-3"></div>
-                              <span className="text-gray-300">
-                                 Real-time 3D mapping with MapLibre
-                              </span>
-                           </li>
-                           <li className="flex items-center">
-                              <div className="w-2 h-2 bg-[#E2CF7D] rounded-full mr-3"></div>
-                              <span className="text-gray-300">
-                                 Multi-service commission system (5-9%)
-                              </span>
-                           </li>
-                           <li className="flex items-center">
-                              <div className="w-2 h-2 bg-[#E2CF7D] rounded-full mr-3"></div>
-                              <span className="text-gray-300">
-                                 Loyalty & credit points system
-                              </span>
-                           </li>
-                           <li className="flex items-center">
-                              <div className="w-2 h-2 bg-[#E2CF7D] rounded-full mr-3"></div>
-                              <span className="text-gray-300">
-                                 Complete admin control panel
-                              </span>
-                           </li>
-                           <li className="flex items-center">
-                              <div className="w-2 h-2 bg-[#E2CF7D] rounded-full mr-3"></div>
-                              <span className="text-gray-300">
-                                 Cross-platform (Web, Android, iOS)
-                              </span>
-                           </li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
+               
             </div>
          </div>
       </section>

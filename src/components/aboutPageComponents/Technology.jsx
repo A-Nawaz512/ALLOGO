@@ -66,7 +66,7 @@ const Technology = () => {
             >
                <h2 className="text-4xl md:text-5xl font-bold mb-6">
                   <span className="text-[#202020]">Our</span>{" "}
-                  <span className="bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] bg-clip-text text-transparent">
+                  <span className="bg-linear-to-r from-[#6F4918] to-[#E2CF7D] bg-clip-text text-transparent">
                      Technology
                   </span>
                </h2>
@@ -94,7 +94,7 @@ const Technology = () => {
                      <div className="relative z-10">
                         <div className="flex items-start">
                            <div className="f absolute -top-10 -right-10">
-                              <div className="w-12 h-12 bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] flex items-center justify-center">
+                              <div className="w-12 h-12 bg-linear-to-r from-[#6F4918] to-[#E2CF7D] flex items-center justify-center">
                                  <div className="text-white text-xl">
                                     {feature.icon}
                                  </div>
@@ -126,7 +126,7 @@ const Technology = () => {
 
             {/* 3D Map Features - Below the grid */}
             <div
-               className="bg-gradient-to-br from-[#6F4918] to-[#E2CF7D] p-1 rounded-2xl overflow-hidden"
+               className="bg-linear-to-br from-[#6F4918] to-[#E2CF7D] p-1 rounded-2xl overflow-hidden"
                data-aos="fade-up"
                data-aos-delay="300"
                data-aos-once="true"
@@ -160,7 +160,7 @@ const Technology = () => {
                         data-aos-mirror="false"
                         data-aos-anchor-placement="top-center"
                      >
-                        <div className="w-16 h-16 bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div className="w-16 h-16 bg-linear-to-r from-[#6F4918] to-[#E2CF7D] rounded-full flex items-center justify-center mx-auto mb-4">
                            <span className="text-white font-bold text-2xl">
                               1
                            </span>
@@ -182,7 +182,7 @@ const Technology = () => {
                         data-aos-mirror="false"
                         data-aos-anchor-placement="top-center"
                      >
-                        <div className="w-16 h-16 bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div className="w-16 h-16 bg-linear-to-r from-[#6F4918] to-[#E2CF7D] rounded-full flex items-center justify-center mx-auto mb-4">
                            <span className="text-white font-bold text-2xl">
                               2
                            </span>
@@ -204,7 +204,7 @@ const Technology = () => {
                         data-aos-mirror="false"
                         data-aos-anchor-placement="top-center"
                      >
-                        <div className="w-16 h-16 bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div className="w-16 h-16 bg-linear-to-r from-[#6F4918] to-[#E2CF7D] rounded-full flex items-center justify-center mx-auto mb-4">
                            <span className="text-white font-bold text-2xl">
                               3
                            </span>
