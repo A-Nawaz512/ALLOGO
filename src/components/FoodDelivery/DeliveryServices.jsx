@@ -1,5 +1,6 @@
 // src/components/DeliveryServices.jsx
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   UtensilsCrossed, Pill, Package as PackageIcon, ShoppingBag
 } from 'lucide-react';
@@ -54,12 +55,14 @@ const DeliveryServices = () => {
         {/* Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {Object.entries(services).map(([key, service]) => (
-            <button
+            <motion.button
               key={key}
               onClick={() => setActiveService(key)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
               className={`p-6 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
                 activeService === key 
-                  ? `border-transparent bg-gradient-to-br ${service.color} text-white transform scale-105 shadow-lg` 
+                  ? `border-transparent bg-gradient-to-br ${service.color} text-white shadow-2xl` 
                   : 'border-gray-700 bg-[#1e1c1b] hover:border-[#86632C] hover:bg-[#2a2623] text-[#86632C]'
               }`}
             >
@@ -70,14 +73,20 @@ const DeliveryServices = () => {
               <p className={`text-sm ${activeService === key ? 'text-white/90' : 'text-gray-400'}`}>
                 {service.description}
               </p>
-            </button>
+            </motion.button>
           ))}
         </div>
 
         {/* Active Service Details */}
         <div className="bg-[#1e1c1b] rounded-3xl p-8 md:p-12 shadow-xl border border-gray-700">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            {/* Service Info */}
+            <motion.div
+              key={activeService}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="flex items-center space-x-4 mb-6">
                 <div className={`p-4 rounded-xl bg-gradient-to-br ${services[activeService].color}`}>
                   {services[activeService].icon}
@@ -87,9 +96,7 @@ const DeliveryServices = () => {
                   <div className="w-16 h-1 bg-gradient-to-r from-[#86632C] to-yellow-600 mt-2 rounded-full"></div>
                 </div>
               </div>
-              <p className="text-gray-300 text-lg mb-8">
-                {services[activeService].description}
-              </p>
+              <p className="text-gray-300 text-lg mb-8">{services[activeService].description}</p>
               <ul className="space-y-3 mb-8">
                 {services[activeService].features.map((feature, idx) => (
                   <li key={idx} className="flex items-center space-x-3 text-gray-300">
@@ -101,10 +108,16 @@ const DeliveryServices = () => {
               <button className="bg-gradient-to-r from-[#86632C] to-yellow-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all cursor-pointer">
                 Order Now
               </button>
-            </div>
+            </motion.div>
 
-            {/* Live Tracking Card */}
-            <div className="relative">
+            {/* Live Tracking */}
+            <motion.div
+              key={`${activeService}-tracking`}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
               <div className="bg-[#2a2623] rounded-2xl p-6 text-white shadow-md">
                 <div className="flex justify-between items-center mb-6">
                   <h4 className="text-xl font-semibold">Live Tracking</h4>
@@ -128,7 +141,7 @@ const DeliveryServices = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>

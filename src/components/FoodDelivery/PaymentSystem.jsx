@@ -1,139 +1,109 @@
 // src/components/PaymentSystem.jsx
 import React, { useState } from 'react';
-import { 
-  CreditCard, DollarSign, Smartphone, Shield, 
-  Lock, QrCode, Wallet 
-} from 'lucide-react';
+import { CreditCard, DollarSign, Shield, Lock } from 'lucide-react';
 
 const PaymentSystem = () => {
-  const [paymentMethod, setPaymentMethod] = useState('card');
+  const [paymentMethod, setPaymentMethod] = useState("card");
 
   return (
-    <section id="payment" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section id="payment" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#151212] text-white">
+      <div className="max-w-6xl mx-auto">
+
+        {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full mb-4">
-            <CreditCard className="w-8 h-8 text-white" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Flexible <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Payment System</span>
+          <h2 className="text-4xl font-bold">
+            Payment <span className="text-[#86632C]">System</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Multiple payment options with secure transaction processing and provider unlock system
+          <p className="text-gray-400 mt-3 text-lg">
+            Secure and simple payments for customers and delivery providers
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Customer Payment Options */}
-          <div className="space-y-8">
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-xl border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Customer Payment</h3>
-              
-              <div className="space-y-4 mb-8">
-                {[
-                  { id: 'card', icon: <CreditCard />, title: 'Credit/Debit Card', desc: 'Secure online payments' },
-                  { id: 'cash', icon: <DollarSign />, title: 'Cash on Delivery', desc: 'Pay when you receive' },
-                  { id: 'wallet', icon: <Wallet />, title: 'Digital Wallet', desc: 'UPI, PayPal, etc.' },
-                  { id: 'qr', icon: <QrCode />, title: 'QR Code', desc: 'Scan to pay instantly' }
-                ].map((method) => (
-                  <button
-                    key={method.id}
-                    onClick={() => setPaymentMethod(method.id)}
-                    className={`w-full p-4 rounded-xl border-2 transition-all duration-300 flex items-center space-x-4 ${
-                      paymentMethod === method.id 
-                        ? 'border-green-500 bg-gradient-to-r from-green-50 to-emerald-50' 
-                        : 'border-gray-200 hover:border-gray-300'
-                    }`}
-                  >
-                    <div className={`p-3 rounded-lg ${
-                      paymentMethod === method.id 
-                        ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white' 
-                        : 'bg-gray-100 text-gray-700'
-                    }`}>
-                      {method.icon}
-                    </div>
-                    <div className="text-left">
-                      <div className="font-semibold text-gray-900">{method.title}</div>
-                      <div className="text-sm text-gray-600">{method.desc}</div>
-                    </div>
-                    {paymentMethod === method.id && (
-                      <div className="ml-auto w-3 h-3 bg-green-500 rounded-full"></div>
-                    )}
-                  </button>
-                ))}
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-              <div className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200">
-                <div className="flex items-center space-x-3">
-                  <Shield className="w-5 h-5 text-green-600" />
-                  <span className="text-green-700 font-medium">
-                    All payments are encrypted and PCI-DSS compliant
-                  </span>
-                </div>
-              </div>
+          {/* CUSTOMER PAYMENT */}
+          <div className="p-8 rounded-3xl bg-[#1d1b1b] border border-[#2a2626] shadow-xl">
+            <h3 className="text-2xl font-semibold mb-6 text-[#86632C]">
+              Customer Payment Options
+            </h3>
+
+            <div className="space-y-4">
+              {[
+                { 
+                  id: "card", 
+                  title: "Card Payment", 
+                  icon: <CreditCard />, 
+                  desc: "Secure debit or credit card payment" 
+                },
+                { 
+                  id: "cash", 
+                  title: "Cash on Delivery", 
+                  icon: <DollarSign />, 
+                  desc: "Pay after receiving your order" 
+                },
+              ].map((method) => (
+                <button
+                  key={method.id}
+                  onClick={() => setPaymentMethod(method.id)}
+                  className={`flex items-center w-full p-4 rounded-xl border transition 
+                    ${paymentMethod === method.id 
+                      ? "border-[#86632C] bg-[#2a2626]" 
+                      : "border-[#3a3434] hover:bg-[#242020]"}
+                  `}
+                >
+                  <div className="mr-4 text-[#86632C]">{method.icon}</div>
+                  <div className="text-left flex-1">
+                    <div className="font-semibold text-white">{method.title}</div>
+                    <div className="text-sm text-gray-400">{method.desc}</div>
+                  </div>
+                  {paymentMethod === method.id && (
+                    <div className="ml-auto w-3 h-3 bg-[#86632C] rounded-full"></div>
+                  )}
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-6 flex items-center text-[#86632C] text-sm">
+              <Shield className="w-5 h-5 mr-2" />
+              All transactions are encrypted and secure
             </div>
           </div>
 
-          {/* Provider Requirements */}
-          <div className="space-y-8">
-            <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-8 shadow-xl border border-indigo-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Provider Requirements</h3>
-              
-              <div className="space-y-6">
-                <div className="bg-white rounded-xl p-6 border border-gray-200">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="p-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg">
-                      <Smartphone className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900">Card Verification Required</h4>
-                      <p className="text-sm text-gray-600">For new delivery unlocks</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-700">
-                    Delivery providers must have a verified payment card on file to unlock 
-                    new delivery opportunities and receive priority assignments.
-                  </p>
-                </div>
+          {/* PROVIDER REQUIREMENTS */}
+          <div className="p-8 rounded-3xl bg-[#1d1b1b] border border-[#2a2626] shadow-xl space-y-6">
+            <h3 className="text-2xl font-semibold mb-4 text-[#86632C]">
+              Provider Requirements
+            </h3>
 
-                <div className="bg-white rounded-xl p-6 border border-gray-200">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg">
-                      <Lock className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900">Secure Payouts</h4>
-                      <p className="text-sm text-gray-600">Daily settlements</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-700">
-                    Earnings are securely deposited to your verified account every 24 hours. 
-                    No delays, no hidden fees.
-                  </p>
-                </div>
-
-                <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-6 text-white">
-                  <div className="flex justify-between items-center mb-4">
-                    <h4 className="font-semibold">Commission Summary</h4>
-                    <div className="text-2xl font-bold">5%</div>
-                  </div>
-                  <ul className="space-y-2 text-indigo-100">
-                    <li className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                      <span>Transparent fee structure</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                      <span>No subscription fees</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                      <span>Volume-based discounts available</span>
-                    </li>
-                  </ul>
-                </div>
+            {/* Card Requirement */}
+            <div className="p-5 bg-[#242020] rounded-xl border border-[#3a3434] flex items-start space-x-3">
+              <Lock className="w-6 h-6 text-[#86632C] mt-1" />
+              <div>
+                <h4 className="font-semibold text-white mb-1">
+                  Card Required to Unlock Deliveries
+                </h4>
+                <p className="text-gray-400 text-sm">
+                  Providers must verify a payment card to access new delivery tasks.
+                </p>
               </div>
             </div>
+
+            {/* Secure Payouts */}
+            <div className="p-5 bg-[#242020] rounded-xl border border-[#3a3434]">
+              <h4 className="font-semibold text-white mb-1">Secure Daily Payouts</h4>
+              <p className="text-gray-400 text-sm">
+                Earnings are transferred every 24 hours to your verified account.
+              </p>
+            </div>
+
+            {/* Commission */}
+            <div className="p-5 bg-[#2a2626] rounded-xl border border-[#3a3434]">
+              <h4 className="font-semibold text-white mb-1">ALLOGO Commission</h4>
+              <p className="text-gray-300 text-sm">
+                Flat <span className="text-[#86632C] font-bold">5%</span> on each delivery.
+              </p>
+            </div>
+
           </div>
         </div>
       </div>

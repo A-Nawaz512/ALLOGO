@@ -1,134 +1,134 @@
 // src/components/Header.jsx
 import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const Header = () => {
   const slides = [
     {
-      type: "Food",
-      text: "Delicious Meals Delivered to Your Door",
+      title: "Fast Delivery for Food",
       subText:
-        "Freshly cooked meals from your favorite restaurants, delivered fast and hot to you.",
+        "All-in-one delivery platform for orders, errands, pickups and logistics.",
       image:
-        "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      cta1: { text: "Order Now", link: "/order" },
-      cta2: { text: "View Menu", link: "/menu" },
+        "https://images.pexels.com/photos/6169041/pexels-photo-6169041.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      highlight: "Delivery",
+      cta1: { text: "Get Started", link: "/start" },
+      cta2: { text: "Learn More", link: "/about" },
     },
     {
-      type: "Specials",
-      text: "Hot & Fresh Deals Every Day",
+      title: "City & Intercity Deliveries with Smart Routing A → B → C",
       subText:
-        "Check out our daily specials and discounts to make your meal even more enjoyable.",
+        "Flexible routes, zone-based pricing, and direct assignment to delivery providers.",
       image:
-        "https://images.pexels.com/photos/2232/vegetables-italian-pizza-restaurant.jpg?auto=compress&cs=tinysrgb&w=1600",
-      cta1: { text: "Explore Deals", link: "/deals" },
-      cta2: { text: "Order Now", link: "/order" },
+        "https://images.pexels.com/photos/5025508/pexels-photo-5025508.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      highlight: "Routing",
+      cta1: { text: "Create Delivery", link: "/create" },
+      cta2: { text: "Explore Features", link: "/features" },
     },
     {
-      type: "Fast Delivery",
-      text: "Quick Delivery Right to Your Doorstep",
+      title: "In-App Chat, Call or WhatsApp Communication",
       subText:
-        "Track your order in real-time and enjoy your meal without waiting too long.",
+        "Stay connected with customers and providers in real time with instant communication tools.",
       image:
-        "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      cta1: { text: "Track Order", link: "/track" },
-      cta2: { text: "Order Again", link: "/order" },
+        "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      highlight: "Communication",
+      cta1: { text: "Try Demo", link: "/demo" },
+      cta2: { text: "Connect Team", link: "/contact" },
+    },
+    {
+      title: "Only 5% Commission with Secured Payments",
+      subText:
+        "Customer can pay via cash or card. Providers must verify card to unlock new deliveries.",
+      image:
+        "https://images.pexels.com/photos/4968391/pexels-photo-4968391.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      highlight: "Commission",
+      cta1: { text: "Sign Up", link: "/signup" },
+      cta2: { text: "Pricing", link: "/pricing" },
     },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Initialize AOS
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  // Auto slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
-  const currentSlide = slides[currentIndex];
+  const slide = slides[currentIndex];
 
-  // Determine highlight word
-  const highlightWord =
-    currentSlide.type === "Food"
-      ? "Delivered"
-      : currentSlide.type === "Specials"
-      ? "Deals"
-      : "Delivery";
+  // Text Split for Highlighting
+  const highlightWord = slide.highlight;
+  const [before, after] = slide.title.split(highlightWord);
 
   return (
-    <div className="bg-amber-300 min-h-screen text-white relative overflow-x-hidden">
-      <section className="relative flex items-center justify-center h-[100vh] overflow-hidden">
+    <div className="relative min-h-screen bg-black text-white overflow-hidden">
+      <section className="relative h-[100vh] flex items-center justify-center">
         {/* Background Images */}
-        <div className="absolute inset-0 w-full h-full">
-          {slides.map((slide, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-2000 ease-in-out ${
-                index === currentIndex ? "opacity-100" : "opacity-0"
-              }`}
-              style={{ backgroundImage: `url(${slide.image})` }}
-            ></div>
-          ))}
+        {slides.map((s, i) => (
+          <div
+            key={i}
+            className={`absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] ${
+              i === currentIndex ? "opacity-100 scale-100" : "opacity-0 scale-105"
+            }`}
+            style={{ backgroundImage: `url(${s.image})` }}
+          ></div>
+        ))}
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black"></div>
+
+        <div className="relative z-20 text-center px-5 max-w-3xl mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.8 }}
+            >
+              {/* MAIN TITLE */}
+              <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+                {before}
+                <span className="text-[#f5b45d]">{highlightWord}</span>
+                {after}
+              </h1>
+
+              {/* SUB TITLE */}
+              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+                {slide.subText}
+              </p>
+
+              {/* CTA BUTTONS */}
+              <div className="flex justify-center gap-4 mt-6">
+                <a
+                  href={slide.cta1.link}
+                  className="bg-[#f5b45d] text-black font-semibold px-6 py-3 rounded-xl hover:bg-[#d89a49] transition transform hover:scale-105"
+                >
+                  {slide.cta1.text}
+                </a>
+                <a
+                  href={slide.cta2.link}
+                  className="border-2 border-[#f5b45d] text-[#f5b45d] font-semibold px-6 py-3 rounded-xl hover:bg-[#f5b45d] hover:text-black transition transform hover:scale-105"
+                >
+                  {slide.cta2.text}
+                </a>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0d0d0d]/70 via-[#0d0d0d]/60 to-[#0d0d0d]"></div>
-
-        {/* Text Content */}
-        <div
-          className="relative z-10 text-center px-3 md:px-6 max-w-full md:max-w-3xl mx-auto"
-          data-aos="fade-up"
-        >
-          {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-white">
-            {currentSlide.text.includes(highlightWord) ? (
-              <>
-                <span className="text-white">
-                  {currentSlide.text.split(highlightWord)[0]}
-                </span>{" "}
-                <span className="text-[#f7b35a]">{highlightWord}</span>
-                <span className="text-white">
-                  {currentSlide.text.split(highlightWord)[1]}
-                </span>
-              </>
-            ) : (
-              <span className="text-white">{currentSlide.text}</span>
-            )}
-          </h1>
-
-          {/* Sub Text */}
-          <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
-            {currentSlide.subText}
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex justify-center space-x-4 mt-4" data-aos="zoom-in">
-            <a
-              href={currentSlide.cta1.link}
-              className="bg-[#ca9249] text-[white] font-semibold px-6 py-3 rounded-xl hover:bg-[#8d5b1a] transition transform hover:scale-105 shadow-lg"
-            >
-              {currentSlide.cta1.text}
-            </a>
-            <a
-              href={currentSlide.cta2.link}
-              className="border-2 border-[#6F4918] text-[#976626] font-semibold px-6 py-3 rounded-xl hover:bg-[#e8a856] hover:text-[white] transition transform hover:scale-105"
-            >
-              {currentSlide.cta2.text}
-            </a>
-          </div>
-        </div>
-
-        {/* Bottom Gradient */}
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/90 to-transparent"></div>
+        {/* Bottom Fade */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent"></div>
       </section>
     </div>
   );
 };
-export default Header
+
+export default Header;

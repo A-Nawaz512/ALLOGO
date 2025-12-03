@@ -1,5 +1,5 @@
 // src/components/ZoneCoverage.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   MapPin,
   Building,
@@ -11,8 +11,8 @@ import {
   Shield,
   Zap,
   ChevronRight,
-  CheckCircle,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const ZoneCoverage = () => {
   const [selectedZone, setSelectedZone] = useState("within-city");
@@ -26,22 +26,10 @@ const ZoneCoverage = () => {
       color: "from-[#86632C] to-yellow-600",
       description: "Fast deliveries within city limits",
       features: [
-        {
-          text: "Under 30 minutes average",
-          icon: <Clock className="w-4 h-4" />,
-        },
-        {
-          text: "Real-time traffic updates",
-          icon: <Navigation className="w-4 h-4" />,
-        },
-        {
-          text: "Multiple pickup points",
-          icon: <MapPin className="w-4 h-4" />,
-        },
+        { text: "Under 30 minutes average", icon: <Clock className="w-4 h-4" /> },
+        { text: "Real-time traffic updates", icon: <Navigation className="w-4 h-4" /> },
+        { text: "Multiple pickup points", icon: <MapPin className="w-4 h-4" /> },
       ],
-      coverage: "Covers all city zones including suburbs",
-      deliveryTime: "20-45 minutes",
-      price: "Starting at $4.99",
     },
     {
       id: "between-cities",
@@ -50,19 +38,10 @@ const ZoneCoverage = () => {
       color: "from-[#86632C] to-purple-600",
       description: "Reliable inter-city transportation",
       features: [
-        {
-          text: "Cross-zone coordination",
-          icon: <Globe className="w-4 h-4" />,
-        },
+        { text: "Cross-zone coordination", icon: <Globe className="w-4 h-4" /> },
         { text: "Priority handling", icon: <Shield className="w-4 h-4" /> },
-        {
-          text: "Express options available",
-          icon: <Zap className="w-4 h-4" />,
-        },
+        { text: "Express options available", icon: <Zap className="w-4 h-4" /> },
       ],
-      coverage: "Connects major cities within 200km radius",
-      deliveryTime: "2-6 hours",
-      price: "Starting at $19.99",
     },
     {
       id: "multi-zone",
@@ -75,55 +54,22 @@ const ZoneCoverage = () => {
         { text: "Dynamic optimization", icon: <Zap className="w-4 h-4" /> },
         { text: "24/7 monitoring", icon: <Shield className="w-4 h-4" /> },
       ],
-      coverage: "National network with intelligent routing",
-      deliveryTime: "Custom based on route",
-      price: "Custom pricing",
     },
   ];
 
+  const zoneIcons = {
+    "within-city": <Building className="w-6 h-6 text-white" />,
+    "between-cities": <Train className="w-6 h-6 text-white" />,
+    "multi-zone": <Globe className="w-6 h-6 text-white" />,
+  };
+
   const cities = [
-    {
-      id: "city-a",
-      name: "Metropolis A",
-      zone: "within-city",
-      x: "20%",
-      y: "40%",
-    },
-    {
-      id: "city-b",
-      name: "Urban Center B",
-      zone: "within-city",
-      x: "50%",
-      y: "60%",
-    },
-    {
-      id: "city-c",
-      name: "Capital City C",
-      zone: "between-cities",
-      x: "70%",
-      y: "30%",
-    },
-    {
-      id: "city-d",
-      name: "Hub City D",
-      zone: "between-cities",
-      x: "35%",
-      y: "20%",
-    },
-    {
-      id: "city-e",
-      name: "Port City E",
-      zone: "multi-zone",
-      x: "80%",
-      y: "70%",
-    },
-    {
-      id: "city-f",
-      name: "Tech Valley F",
-      zone: "multi-zone",
-      x: "10%",
-      y: "80%",
-    },
+    { id: "city-a", name: "Metropolis A", zone: "within-city", x: "15%", y: "40%" },
+    { id: "city-b", name: "Urban Center B", zone: "within-city", x: "45%", y: "55%" },
+    { id: "city-c", name: "Capital City C", zone: "between-cities", x: "70%", y: "25%" },
+    { id: "city-d", name: "Hub City D", zone: "between-cities", x: "35%", y: "15%" },
+    { id: "city-e", name: "Port City E", zone: "multi-zone", x: "80%", y: "65%" },
+    { id: "city-f", name: "Tech Valley F", zone: "multi-zone", x: "10%", y: "75%" },
   ];
 
   const currentZone = zones.find((z) => z.id === selectedZone);
@@ -171,22 +117,16 @@ const ZoneCoverage = () => {
                       <div className="flex items-center space-x-4">
                         <div
                           className={`p-3 rounded-lg ${
-                            selectedZone === zone.id
-                              ? "bg-white/20"
-                              : "bg-gray-800"
+                            selectedZone === zone.id ? "bg-white/20" : "bg-gray-800"
                           }`}
                         >
                           {zone.icon}
                         </div>
                         <div className="text-left">
-                          <div className="font-semibold text-lg">
-                            {zone.name}
-                          </div>
+                          <div className="font-semibold text-lg">{zone.name}</div>
                           <div
                             className={`text-sm ${
-                              selectedZone === zone.id
-                                ? "text-white/90"
-                                : "text-gray-400"
+                              selectedZone === zone.id ? "text-white/90" : "text-gray-400"
                             }`}
                           >
                             {zone.description}
@@ -202,10 +142,7 @@ const ZoneCoverage = () => {
                     {selectedZone === zone.id && (
                       <div className="mt-4 pl-16 space-y-2 animate-fadeIn">
                         {zone.features.map((feature, idx) => (
-                          <div
-                            key={idx}
-                            className="flex items-center space-x-2 text-gray-300"
-                          >
+                          <div key={idx} className="flex items-center space-x-2 text-gray-300">
                             {feature.icon}
                             <span>{feature.text}</span>
                           </div>
@@ -218,9 +155,7 @@ const ZoneCoverage = () => {
             </div>
 
             {/* Zone Performance */}
-            <div
-              className={`bg-gradient-to-r ${currentZone.color} rounded-3xl p-6 shadow-xl`}
-            >
+            <div className={`bg-gradient-to-r ${currentZone.color} rounded-3xl p-6 shadow-xl`}>
               <h3 className="text-2xl font-bold mb-6">Zone Performance</h3>
               <div className="grid grid-cols-2 gap-6 text-white">
                 <div className="bg-white/10 rounded-xl p-4">
@@ -247,16 +182,14 @@ const ZoneCoverage = () => {
           <div className="space-y-8">
             <div className="bg-[#1e1c1b] rounded-3xl p-6 shadow-xl border border-gray-700 h-full relative">
               <h3 className="text-2xl font-bold mb-4">Zone Network Map</h3>
-              <p className="text-gray-300 mb-4">
-                Interactive coverage visualization
-              </p>
+              <p className="text-gray-300 mb-4">Interactive coverage visualization</p>
               <div className="relative h-96 bg-gray-900 rounded-2xl border-2 border-gray-700">
                 {cities.map((city) => (
                   <button
                     key={city.id}
                     onClick={() => setActiveCity(city.id)}
                     className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
-                      activeCity === city.id ? "scale-125" : "hover:scale-110"
+                      activeCity === city.id ? "scale-125 z-10" : "hover:scale-110 z-0"
                     }`}
                     style={{ left: city.x, top: city.y }}
                   >
@@ -269,28 +202,32 @@ const ZoneCoverage = () => {
                           : "bg-gradient-to-br from-[#86632C] to-green-600"
                       }`}
                     >
-                      <Building className="w-6 h-6 text-white" />
+                      {zoneIcons[city.zone]}
                     </div>
                   </button>
                 ))}
               </div>
-            </div>
 
-            {/* CTA */}
-            <div className="bg-gradient-to-r from-[#86632C] to-yellow-600 rounded-3xl p-8 text-center shadow-xl">
-              <h3 className="text-2xl font-bold mb-4">Ready to Deliver?</h3>
-              <p className="text-white/90 mb-6 max-w-md mx-auto">
-                Join our network of delivery providers and start earning today.
-                5% flat commission across all zones.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-[#86632C] px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-shadow">
-                  Become a Provider
-                </button>
-                <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors">
-                  View Zone Details
-                </button>
-              </div>
+              {/* Ready to Deliver CTA */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="bg-gradient-to-r from-[#86632C] to-yellow-600 rounded-3xl p-8 text-center shadow-xl mt-8 space-y-6"
+              >
+                <h3 className="text-2xl md:text-3xl font-bold">Ready to Deliver?</h3>
+                <p className="text-white/90 text-lg md:text-xl max-w-xl mx-auto">
+                  Join our network of delivery providers and start earning today. 5% flat commission across all zones.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button className="bg-white text-[#86632C] px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-shadow w-full sm:w-auto">
+                    Become a Provider
+                  </button>
+                  <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors w-full sm:w-auto">
+                    View Zone Details
+                  </button>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>

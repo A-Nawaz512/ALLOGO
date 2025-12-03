@@ -9,7 +9,7 @@ import ProviderApp from '../components/FoodDelivery/ProviderApp';
 import ChatIntegration from '../components/FoodDelivery/ChatIntegration';
 function FoodDeliveryPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="">
       <Navbar/>
       <Hero />
       <DeliveryServices />
