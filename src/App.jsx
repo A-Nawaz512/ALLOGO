@@ -12,6 +12,7 @@ import Rental from "./pages/Rental";
 import Appartment from "./pages/Appartment";
 import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
+import FoodDelivery from "./pages/FoodDeveleviry";
 
 const MainLayout = () => (
    <div className="lg:mx-auto lg:max-w-[1536px]">
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
          { path: "/contact", element: <ContactPage /> },
          { path: "/services/rides", element: <RidesPage /> },
          { path: "/services/deliveries", element: <Deliveries /> },
+         { path: "services/food-delivery", element: <FoodDelivery /> },
          { path: "/services/rentals", element: <Rental /> },
          { path: "/services/apartments", element: <Appartment /> }, 
          { path: "/signup", element: <Signup /> }, 
