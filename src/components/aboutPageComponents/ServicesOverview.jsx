@@ -1,5 +1,6 @@
 // src/components/about/ServicesOverview.jsx
 import React from "react";
+import "../../App.css";
 import { Link } from "react-router-dom";
 import {
    FaCar,
@@ -101,14 +102,20 @@ const ServicesOverview = () => {
    ];
 
    return (
-      <section className="py-20 px-6 lg:px-8 bg-gray-100">
+      <section className="pb-20 px-6 lg:px-8 bg-white">
          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                  <span className="text-[#2A2A2A]">Our</span>{" "}
-                  <span className="bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] bg-clip-text text-transparent">
-                     Services
-                  </span>
+               <h2
+                  className="text-4xl  md:text-5xl font-bold mb-6 flex items-center justify-center gap-6"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+               >
+                  <div className="hidden md:block bg-amber-900 w-25 h-[2px]"></div>
+                  <div className="pb-3">
+                     <span className="text-[#2a2a2a]">Our</span>{" "}
+                     <span className="text-[#6F4918]">Services</span>
+                  </div>
+                  <div className="hidden md:block  bg-amber-900 w-25 h-[2px]"></div>
                </h2>
                <p className="text-gray-400 text-lg max-w-3xl mx-auto">
                   Six comprehensive services integrated into one powerful
@@ -120,22 +127,13 @@ const ServicesOverview = () => {
                {services.map((service, index) => (
                   <div
                      key={index}
-                     className="relative rounded-xl border border-[#3a3a3a] p-6 hover:border-[#6F4918] transition-all duration-300 hover:-translate-y-2 flex flex-col h-full overflow-hidden group"
+                     className="relative rounded-xl bg-white shadow-lg hover:shadow-xl border border-2 border-[#A68748] p-6 hover:border-[#6F4918] transition-all duration-500 hover:-translate-y-2 flex flex-col h-full overflow-hidden group"
                   >
-                     {/* Background Image with Overlay */}
-                     <div
-                        className="absolute inset-0 bg-cover bg-center z-0  group-hover:opacity-30 transition-opacity duration-300"
-                        style={{ backgroundImage: `url(/simple2.jpg)` }}
-                     ></div>
-
-                     {/* Dark Overlay */}
-                     <div className="absolute inset-0 bg-[#2a2a2a]/90 z-0 group-hover:bg-[#2a2a2a]/80 transition-all duration-300"></div>
-
                      {/* Content */}
                      <div className="relative z-10">
                         <div>
                            <div className="flex items-center justify-between pb-3 gap-3">
-                              <h3 className="text-xl font-bold text-gray-100">
+                              <h3 className="text-xl font-bold text-[#202020]">
                                  {service.title}
                               </h3>
                               {service.icon}
@@ -147,7 +145,7 @@ const ServicesOverview = () => {
                               {service.features.map((feature, idx) => (
                                  <li
                                     key={idx}
-                                    className="flex items-center text-sm text-gray-300"
+                                    className="flex items-center text-sm text-gray-700"
                                  >
                                     <div className="w-1.5 h-1.5 bg-[#E2CF7D] rounded-full mr-2"></div>
                                     {feature}
@@ -157,7 +155,7 @@ const ServicesOverview = () => {
                         </div>
 
                         {/* Explore Button */}
-                        <div className="mt-auto pt-4 border-t border-[#3a3a3a]/50 flex justify-center">
+                        <div className="mt-auto pt-4 border-t border-[#3a3a3a]/50 flex items-center justify-center">
                            <Link
                               to={service.path}
                               className="relative z-20 flex items-center justify-between group bg-[#6F4918] w-fit py-3 px-5 gap-8 rounded-full"
@@ -174,29 +172,29 @@ const ServicesOverview = () => {
             </div>
 
             {/* Features Banner with CTA */}
-            <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-[#202020] to-[#2a2a2a] border border-[#3a3a3a]">
+            <div className="mt-16 p-8 rounded-2xl bg-white shadow-2xl shadow-3xl border border-[#D4BE71]">
                <div className="grid md:grid-cols-3 gap-8">
                   <div className="text-center">
-                     <div className="text-3xl font-bold bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] bg-clip-text text-transparent mb-2">
+                     <div className="text-3xl font-bold bg-[#6F4918] bg-clip-text text-transparent mb-2">
                         1 Point = 1 DA
                      </div>
-                     <p className="text-gray-400">
+                     <p className="text-gray-700">
                         Loyalty system for all users
                      </p>
                   </div>
                   <div className="text-center">
-                     <div className="text-3xl font-bold bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] bg-clip-text text-transparent mb-2">
+                     <div className="text-3xl font-bold bg-[#6F4918] bg-clip-text text-transparent mb-2">
                         1000-2000 DA
                      </div>
-                     <p className="text-gray-400">
+                     <p className="text-gray-700">
                         Credit limit for active users
                      </p>
                   </div>
                   <div className="text-center">
-                     <div className="text-3xl font-bold bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] bg-clip-text text-transparent mb-2">
+                     <div className="text-3xl font-bold bg-[#6F4918] bg-clip-text text-transparent mb-2">
                         Real-time
                      </div>
-                     <p className="text-gray-400">3D tracking on MapLibre</p>
+                     <p className="text-gray-700">3D tracking on MapLibre</p>
                   </div>
                </div>
 
@@ -204,12 +202,12 @@ const ServicesOverview = () => {
                <div className="text-center mt-10">
                   <Link
                      to="/services"
-                     className="inline-flex items-center px-8 py-2 md:py-4 bg-gradient-to-r from-[#6F4918] via-[#6F4918] to-[#E2CF7D] text-white rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                     className="inline-flex items-center px-8 py-2 md:py-4 bg-[#6F4918] text-white rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
                   >
                      <span>Explore All</span>
                      <FaArrowRight className="ml-3 animate-pulse" />
                   </Link>
-                  <p className="text-gray-400 text-sm mt-3">
+                  <p className="text-gray-800 text-sm mt-3">
                      Access all 6 services from one dashboard
                   </p>
                </div>

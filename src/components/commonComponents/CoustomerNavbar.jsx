@@ -181,8 +181,8 @@ const Navbar = () => {
           ) : (
             <>
 
-              <Link to="/signup" className="px-5 py-2 bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] text-white rounded-lg shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105">Sign Up</Link>
-              <Link to="/login" className="px-5 py-2 border-2 border-[#6F4918] text-white rounded-lg hover:bg-[#6F4918] transition-all duration-200 hover:scale-105">Login</Link>
+              <Link to="/signup" className="px-5 py-2 bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] text-white rounded-lg shadow-md hover:shadow-xl transition-all duration-600 hover:scale-105">Sign Up</Link>
+              <Link to="/login" className="px-5 py-2 border-2 border-[#6F4918] text-white rounded-lg hover:bg-[#6F4918] transition-all duration-900 hover:scale-105">Login</Link>
             </>
           )}
         </div>

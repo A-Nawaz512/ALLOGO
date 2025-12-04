@@ -21,16 +21,11 @@ const HeroSection = () => {
       >
          <div className="container mx-auto px-4 py-16 text-center text-white">
             <div className="max-w-4xl mx-auto">
-               <div className="inline-flex items-center justify-center bg-orange-600 text-white px-6 py-3 rounded-full mb-6">
-                  <FaTools className="mr-2 text-xl" />
-                  <span className="font-semibold">
-                     Roadside Assistance & Towing
-                  </span>
-               </div>
+               
 
                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                   Emergency Help{" "}
-                  <span className="text-orange-400">On The Road</span>
+                  <span className="text-[#76511E]">On The Road</span>
                </h1>
 
                <p className="text-xl md:text-2xl mb-8 text-gray-200">
@@ -38,7 +33,7 @@ const HeroSection = () => {
                </p>
 
                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-orange-400/30">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-md hover:shadow-white border border-orange-400/30">
                      <GiTowTruck className="text-4xl mx-auto mb-4 text-orange-300" />
                      <h3 className="text-xl font-bold mb-2">Fast Towing</h3>
                      <p className="text-gray-300">
@@ -46,7 +41,7 @@ const HeroSection = () => {
                      </p>
                   </div>
 
-                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-orange-400/30">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border shadow-md hover:shadow-white border-orange-400/30">
                      <FaTools className="text-4xl mx-auto mb-4 text-orange-300" />
                      <h3 className="text-xl font-bold mb-2">On-site Repairs</h3>
                      <p className="text-gray-300">
@@ -54,7 +49,7 @@ const HeroSection = () => {
                      </p>
                   </div>
 
-                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-orange-400/30">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border shadow-md hover:shadow-white border-orange-400/30">
                      <FaCarCrash className="text-4xl mx-auto mb-4 text-orange-300" />
                      <h3 className="text-xl font-bold mb-2">Emergency Help</h3>
                      <p className="text-gray-300">
@@ -62,7 +57,7 @@ const HeroSection = () => {
                      </p>
                   </div>
 
-                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-orange-400/30">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border shadow-md hover:shadow-white border-orange-400/30">
                      <FaMapMarkerAlt className="text-4xl mx-auto mb-4 text-orange-300" />
                      <h3 className="text-xl font-bold mb-2">Live Tracking</h3>
                      <p className="text-gray-300">
@@ -72,11 +67,11 @@ const HeroSection = () => {
                </div>
 
                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                  <button className="bg-[#76511E] hover:bg-[#53370f] text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                      <FaPhoneAlt className="inline mr-2" />
                      Request Help Now
                   </button>
-                  <button className="bg-transparent hover:bg-white/20 text-white font-bold py-4 px-8 rounded-full text-lg border-2 border-white transition duration-300">
+                  <button className="bg-transparent hover:bg-white hover:border-white text-[#76511E] font-bold py-4 px-8 rounded-full text-lg border-2 border-[#76511E] transition duration-300">
                      Become a Provider
                   </button>
                </div>

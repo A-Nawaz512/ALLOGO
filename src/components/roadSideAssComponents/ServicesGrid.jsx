@@ -82,7 +82,7 @@ const ServicesGrid = () => {
             <div className="text-center mb-12">
                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                   Comprehensive{" "}
-                  <span className="text-orange-600">Roadside Services</span>
+                  <span className="text-[#B49955]">Roadside Services</span>
                </h2>
                <p className="text-gray-600 max-w-2xl mx-auto text-lg">
                   Get help for any roadside emergency with our network of
@@ -94,17 +94,15 @@ const ServicesGrid = () => {
                {services.map((service, index) => (
                   <div
                      key={index}
-                     className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                     className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 hover:border-[#B49955] hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
                      data-aos="zoom-in"
                      data-aos-delay={index * 100}
                   >
-                     <div
-                        className={`h-2 bg-linear-to-r ${service.color}`}
-                     ></div>
+                    
                      <div className="p-6">
-                        <div className="flex items-center justify-center w-16 h-16 rounded-full bg-linear-to-r from-gray-100 to-gray-200 mb-4 mx-auto">
-                           <div className="text-gray-700">{service.icon}</div>
-                        </div>
+                        
+                           <div className="text-[#B49955] flex items-center justify-center pb-8">{service.icon}</div>
+                       
                         <h3 className="text-xl font-bold text-gray-800 mb-3 text-center">
                            {service.title}
                         </h3>
@@ -117,12 +115,12 @@ const ServicesGrid = () => {
                                  key={idx}
                                  className="flex items-center text-sm text-gray-500"
                               >
-                                 <FaBolt className="text-orange-500 mr-2 text-xs" />
+                                 <FaBolt className="text-[#b49955] mr-2 text-xs" />
                                  {feature}
                               </li>
                            ))}
                         </ul>
-                        <button className="mt-6 w-full py-3 bg-linear-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 text-gray-800 font-semibold rounded-lg transition duration-300">
+                        <button className="mt-6 w-full py-3 bg-[#B49955] hover:bg-[#7A5522] text-white  font-semibold rounded-lg transition duration-300">
                            Learn More
                         </button>
                      </div>
