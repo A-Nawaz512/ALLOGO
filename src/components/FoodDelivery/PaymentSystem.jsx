@@ -1,6 +1,7 @@
 // src/components/PaymentSystem.jsx
 import React, { useState } from "react";
 import { CreditCard, DollarSign, Shield, Lock } from "lucide-react";
+import { motion } from "framer-motion";
 
 const PaymentSystem = () => {
   const [paymentMethod, setPaymentMethod] = useState("card");
@@ -9,13 +10,13 @@ const PaymentSystem = () => {
     {
       id: "card",
       title: "Card Payment",
-      icon: <CreditCard />,
+      icon: <CreditCard className="w-6 h-6" />,
       desc: "Secure debit or credit card payment",
     },
     {
       id: "cash",
       title: "Cash on Delivery",
-      icon: <DollarSign />,
+      icon: <DollarSign className="w-6 h-6" />,
       desc: "Pay after receiving your order",
     },
   ];
@@ -26,12 +27,12 @@ const PaymentSystem = () => {
 
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-gradient-to-r from-[#F5B45D] to-[#FACC15] rounded-full mb-4">
+          <div className="inline-flex items-center justify-center p-4 bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] rounded-full mb-4 shadow-lg">
             <CreditCard className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Payment{" "}
-            <span className="bg-gradient-to-r from-[#F5B45D] to-[#FACC15] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] bg-clip-text text-transparent">
               System
             </span>
           </h2>
@@ -43,76 +44,97 @@ const PaymentSystem = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
           {/* CUSTOMER PAYMENT */}
-          <div className="p-8 rounded-3xl bg-white border border-gray-200 shadow-xl">
-            <h3 className="text-2xl font-semibold mb-6 text-[#F5B45D]">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="p-8 rounded-3xl bg-white border border-gray-200 shadow-xl"
+          >
+            <h3 className="text-2xl font-semibold mb-6 text-[#a37d4b]">
               Customer Payment Options
             </h3>
 
             <div className="space-y-4">
               {customerMethods.map((method) => (
-                <button
+                <motion.button
                   key={method.id}
                   onClick={() => setPaymentMethod(method.id)}
+                  whileHover={{ scale: 1.03 }}
                   className={`flex items-center w-full p-4 rounded-xl border transition 
                     ${paymentMethod === method.id 
-                      ? "border-transparent bg-gradient-to-r from-[#F5B45D] to-[#FACC15] text-white shadow-lg" 
-                      : "border-gray-200 hover:bg-gray-100 text-gray-900"}
-                  `}
+                      ? "border-transparent bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] text-white shadow-lg" 
+                      : "border-gray-200 hover:bg-gray-100 text-gray-900"} cursor-pointer`}
                 >
-                  <div className="mr-4 text-[#F5B45D]">{method.icon}</div>
+                  <div className={`mr-4 p-3 rounded-lg ${paymentMethod === method.id ? "bg-white/25" : "bg-gray-100"}`}>
+                    {method.icon}
+                  </div>
                   <div className="text-left flex-1">
                     <div className="font-semibold">{method.title}</div>
-                    <div className="text-sm text-gray-500">{method.desc}</div>
+                    <div className="text-sm text-gray-900">{method.desc}</div>
                   </div>
                   {paymentMethod === method.id && (
-                    <div className="ml-auto w-3 h-3 bg-[#F5B45D] rounded-full"></div>
+                    <div className="ml-auto w-4 h-4 bg-white rounded-full shadow-md" />
                   )}
-                </button>
+                </motion.button>
               ))}
             </div>
 
-            <div className="mt-6 flex items-center text-[#F5B45D] text-sm">
+            <div className="mt-6 flex items-center text-[#ca9856] text-sm">
               <Shield className="w-5 h-5 mr-2" />
               All transactions are encrypted and secure
             </div>
-          </div>
+          </motion.div>
 
           {/* PROVIDER REQUIREMENTS */}
-          <div className="p-8 rounded-3xl bg-white border border-gray-200 shadow-xl space-y-6">
-            <h3 className="text-2xl font-semibold mb-4 text-[#F5B45D]">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="p-8 rounded-3xl bg-white border border-gray-200 shadow-xl space-y-6"
+          >
+            <h3 className="text-2xl font-semibold mb-4 text-[#c1975f]">
               Provider Requirements
             </h3>
 
             {/* Card Requirement */}
-            <div className="p-5 bg-yellow-50 rounded-xl border border-gray-200 flex items-start space-x-3">
-              <Lock className="w-6 h-6 text-[#F5B45D] mt-1" />
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="p-5 bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] rounded-xl border border-gray-200 flex items-start space-x-3 shadow-md cursor-pointer"
+            >
+              <Lock className="w-6 h-6 text-[#c3965d] mt-1" />
               <div>
-                <h4 className="font-semibold text-gray-900 mb-1">
+                <h4 className="font-semibold text-white mb-1">
                   Card Required to Unlock Deliveries
                 </h4>
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-900 text-sm">
                   Providers must verify a payment card to access new delivery tasks.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Secure Payouts */}
-            <div className="p-5 bg-yellow-50 rounded-xl border border-gray-200">
-              <h4 className="font-semibold text-gray-900 mb-1">Secure Daily Payouts</h4>
-              <p className="text-gray-500 text-sm">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="p-5 bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] rounded-xl border border-gray-200 shadow-md cursor-pointer"
+            >
+              <h4 className="font-semibold text-white mb-1">Secure Daily Payouts</h4>
+              <p className="text-gray-900 text-sm">
                 Earnings are transferred every 24 hours to your verified account.
               </p>
-            </div>
+            </motion.div>
 
             {/* Commission */}
-            <div className="p-5 bg-yellow-50 rounded-xl border border-gray-200">
-              <h4 className="font-semibold text-gray-900 mb-1">ALLOGO Commission</h4>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="p-5 bg-gradient-to-r from-[#6F4918] to-[#E2CF7D] rounded-xl border border-gray-200 shadow-md cursor-pointer"
+            >
+              <h4 className="font-semibold text-white mb-1">ALLOGO Commission</h4>
               <p className="text-gray-900 text-sm">
-                Flat <span className="text-[#F5B45D] font-bold">5%</span> on each delivery.
+                Flat <span className="text-[#f9f8f7] font-bold">5%</span> on each delivery.
               </p>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
