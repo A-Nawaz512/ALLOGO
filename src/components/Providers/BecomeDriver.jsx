@@ -1,5 +1,3 @@
-// File: src/components/becomedriver/BecomeSection.jsx
-
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -12,7 +10,7 @@ import {
   FaChevronDown,
 } from "react-icons/fa";
 
-export default function BecomeSection() {
+export default function BecomeDriver() {
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -367,6 +365,10 @@ export default function BecomeSection() {
             </div>
           </div>
 
+          <div>
+
+          </div>
+
           {/* Terms */}
           <label className="flex items-start gap-2 text-[#B78E3B] text-sm">
             <input
@@ -382,12 +384,14 @@ export default function BecomeSection() {
           </label>
 
           {/* Submit Button */}
-          <button
-            onClick={handleSubmit}
-            className="w-full p-4 mt-4 text-white text-lg rounded-xl bg-[#B78E3B] hover:bg-[#b8924b] transition-all shadow-lg hover:shadow-[#9A7A3E]/50 font-semibold"
-          >
-            Register as Driver
-          </button>
+          <div className="flex justify-center">
+            <button
+              onClick={handleSubmit}
+              className=" p-4 mt-4 text-white text-lg rounded-xl bg-[#B78E3B] hover:bg-[#b8924b] transition-all shadow-lg hover:shadow-[#9A7A3E]/50 font-semibold"
+            >
+             Send Verification Code
+            </button>
+          </div>
         </div>
       </div>
     </div>

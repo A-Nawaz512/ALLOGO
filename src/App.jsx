@@ -13,8 +13,10 @@ import Appartment from "./pages/Appartment";
 import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
 import FoodDelivery from "./pages/FoodDeveleviry";
-import BookRide from "./pages/BookRide";
-import BecomeDriver from "./pages/BecomeDriver";
+import BecomeDriver from "./components/Providers/BecomeDriver";
+import BecomeDelivery from "./components/Providers/BecomeDelivery";
+import BecomeRoadSide from "./components/Providers/BecomeRoadSide";
+
 
 const MainLayout = () => (
    <div className="lg:mx-auto lg:max-w-[1536px]">
@@ -38,8 +40,9 @@ const router = createBrowserRouter([
          { path: "/services/apartments", element: <Appartment /> }, 
          { path: "/signup", element: <Signup /> }, 
          { path: "/login", element: <Login /> }, 
-         { path: "/bookride", element: <BookRide /> }, 
-         { path: "/becomedriver", element: <BecomeDriver /> }, 
+         { path: "/provider/driver", element: <BecomeDriver /> }, 
+         { path: "/provider/delivery", element: <BecomeDelivery /> }, 
+         { path: "/provider/roadside", element: <BecomeRoadSide /> }, 
 
       ],
    },
