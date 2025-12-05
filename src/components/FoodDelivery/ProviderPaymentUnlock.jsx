@@ -36,7 +36,7 @@ const ProviderPaymentUnlock = () => {
       className="relative py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 text-gray-900 overflow-hidden"
     >
       <div className="absolute inset-0">
-        <div className="bg-gradient-to-tr from-[#fff8e5] to-[#f5f1e0] w-full h-full pointer-events-none"></div>
+        <div className="bg-[#FAFBFC] w-full h-full pointer-events-none"></div>
       </div>
 
       <div className="relative max-w-6xl mx-auto">
