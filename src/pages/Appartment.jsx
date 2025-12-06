@@ -8,7 +8,7 @@ import CTASection from '../components/appartments/CTASection'
 
 const Appartment = () => {
   return (
-    <div>
+    <div className='overflow-x-hidden'>
         <ApartmentHero/>
         <KeyBenefits/>
         <HowItWorksClient/>
